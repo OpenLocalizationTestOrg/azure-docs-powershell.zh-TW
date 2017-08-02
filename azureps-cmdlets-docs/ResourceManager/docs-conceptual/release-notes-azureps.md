@@ -10,18 +10,257 @@ ms.product: azure
 ms.devlang: powershell
 ms.topic: conceptual
 ms.workload: 
-ms.date: 05/18/2017
-ms.openlocfilehash: 97a23180a1fc65d96fdc9dbdffcbe3501a4c4c2a
-ms.sourcegitcommit: 226527be7cb647acfe2ea9ab151185053ab3c6db
+ms.date: 07/26/2017
+ms.openlocfilehash: cc2fe75f498f9043e5a4b632c144877af0143173
+ms.sourcegitcommit: 20bcef86db4e4869125bb63085fcffd009c19280
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/29/2017
+ms.lasthandoff: 07/27/2017
 ---
 # <a name="release-notes"></a>版本資訊
 
 這是此版本中對 Azure PowerShell 所做的變更清單。
 
-## <a name="version-400"></a>4.0.0 版
+## <a name="20170717---version-421"></a>2017.07.17 - 版本 4.2.1
+* 計算
+    - 透過 VM 磁碟和 VM 磁碟快照集修正問題，建立並更新 Cmdlet，(連結) (英文) [https://github.com/azure/azure-powershell/issues/4309]
+      - New-AzureRmDisk
+      - New-AzureRmSnapshot
+      - Update-AzureRmDisk
+      - Update-AzureRmSnapshot
+* 設定檔
+    - 在 RDFE 使用非互動使用者驗證修正問題 (連結) (英文) [https://github.com/Azure/azure-powershell/issues/4299]
+* ServiceManagement
+    - 使用非互動使用者驗證修正問題 (連結) (英文) [https://github.com/Azure/azure-powershell/issues/4299]
+
+## <a name="2017711---version-420"></a>2017.7.11 - 版本 4.2.0
+* AnalysisServices
+    * 新增資料平面 API
+        - 引進用以擷取 AS 伺服器記錄檔 Export-AzureAnalysisServicesInstanceLog 的 API
+* 自動化
+    * 針對 New-AzureRmAutomationSchedule，正確設定每週和每月排程的 TimeZone 值
+        - 詳細資訊可以在本問題找到 (英文)：https://github.com/Azure/azure-powershell/issues/3043
+* AzureBatch
+    - 新增 Get-AzureBatchJobPreparationAndReleaseTaskStatus cmdlet。
+    - 將位元組範圍的開始與結束加入 Get-AzureBatchNodeFileContent 參數。
+* CognitiveServices
+    * 整合辨識服務管理 SDK 1.0.0 版。
+    * 修正帳戶名稱長度檢查錯誤。
+* 計算
+    * 儲存體帳戶類型支援映像磁碟：
+        - 「StorageAccountType」參數已加入 Set-AzureRmImageOsDisk 和 Add-AzureRmImageDataDisk
+    * 採用 Vmss IP 組態的 PrivateIP 和 PublicIP 功能：
+        - 「PrivateIPAddressVersion」、「PublicIPAddressConfigurationName」、「PublicIPAddressConfigurationIdleTimeoutInMinutes」、「DnsSetting」名稱已加入 New-AzureRmVmssIpConfig
+        - 指定 IPv4 或 IPv6 的「PrivateIPAddressVersion」參數已加入 New-AzureRmVmssIpConfig
+    * 效能維護功能：
+        - 「PerformMaintenance」切換參數已加入 Restart-AzureRmVM。
+        - Get-AzureRmVM -Status 會顯示特定 VM 的效能維護資訊
+    * 虛擬機器身分識別功能：
+        - 「IdentityType」參數已加入 New-AzureRmVMConfig 和 UpdateAzureRmVM
+        - Get-AzureRmVM 顯示特定 VM 的身分識別資訊
+    * Vmss 身分識別功能：
+        - 「IdentityType」參數已加入 New-AzureRmVmssConfig
+        - Get-AzureRmVmss 顯示特定 Vmss 的身分識別資訊
+    * Vmss 開機診斷功能：
+        - 設定 Vmss 物件開機診斷的新 Cmdlet：Set-AzureRmVmssBootDiagnostics
+        - 「BootDiagnostic」參數已加入 New-AzureRmVmssConfig
+    * Vmss LicenseType 功能：
+        - 「LicenseType」參數已加入 New-AzureRmVmssConfig
+    * RecoveryPolicyMode 支援：
+        - 「RecoveryPolicyMode」參數已加入 New-AzureRmVmssConfig
+    * 計算資源 Sku 功能：
+        - 新 Cmdlet「Get-AzureRmComputeResourceSku」列出所有計算資源 sku
+* DataFactories
+    * 取代 New-AzureRmDataFactoryGatewayKey
+    * 加入 New-AzureRmDataFactoryGatewayAuthKey 和 Get-AzureRmDataFactoryGatewayAuthKey，推出閘道驗證金鑰功能
+* DataLakeAnalytics
+    * 透過下列命令，加入計算原則 CRUD 支援：
+        - New-AzureRMDataLakeAnalyticsComputePolicy
+        - Get-AzureRMDataLakeAnalyticsComputePolicy
+        - Remove-AzureRMDataLakeAnalyticsComputePolicy
+        - Update-AzureRMDataLakeAnalyticsComputePolicy
+    * 新增支援作業關係中繼資料，協助處理週期性作業和作業流程。 已更新或新增下列命令：
+        - Submit-AzureRMDataLakeAnalyticsJob
+        - Get-AzureRMDataLakeAnalyticsJob
+        - Get-AzureRMDataLakeAnalyticsJobRecurrence
+        - Get-AzureRMDataLakeAnalyticsJobPipeline
+    * 針對作業和目錄 API 更新 Token 對象，以使用正確的 Data Lake 特定對象，而非 Azure 資源對象。
+* DataLakeStore
+    * 新增支援在 Set-AzureRMDataLakeStoreAccount Cmdlet 由使用者管理 KeyVault 金鑰輪替
+    * 新增生活品質更新，在新增使用者管理的 KeyVault 或金鑰輪替時，自動觸發 `enableKeyVault` 呼叫。
+    * 針對作業和目錄 API 更新 Token 對象，以使用正確的 Data Lake 特定對象，而非 Azure 資源對象。
+    * 已修正錯誤，該錯誤會使用下列 Cmdlet 限制建立/附加檔案的大小：
+        - New-AzureRmDataLakeStoreItem
+        - Add-AzureRmDataLakeStoreItemContent
+* Dns
+    * 針對 Get-AzureRmDnsZone 修正管線情節中的錯誤
+        - 詳細資訊可以在這裡找到 (英文)：https://github.com/Azure/azure-powershell/issues/4203
+* HDInsight
+    * 新增支援以啟用/停用 Operations Management Suite (OMS)
+    * 新的 Cmdlet
+        - Enable-AzureRmHDInsightOperationsManagementSuite
+        - Disable-AzureRmHDInsightOperationsManagementSuite
+        - Get-AzureRmHDInsightOperationsManagementSuite
+    * 加入新的參數，將 Spark 自訂設定設為 Add-AzureRmHDInsightConfigValues
+        - Spark 1.6 適用的參數 SparkDefaults 和 SparkThriftConf
+        - Spark 2.0 適用的參數 Spark2Defaults 和 Spark2ThriftConf
+* 深入解析
+    * 問題 #4215 (變更要求) 移除 Get-AzureRmLog Cmdlet 的 15 天期間限制。 此外亦小幅變更了單元測試名稱。
+    * 已針對 Get-AzureRmLog 修正問題 #3957
+        - 問題 #1：後端傳回的記錄，每頁 200 筆，透過接續 Token 連結下一頁。 客戶會看到 Cmdlet 只傳回 200 筆記錄，但確知應還有更多記錄。 除非 MaxEvents 小於 200，否則不論客戶設定的值為何，都會發生這種情形。
+        - 問題 #2：文件包含不正確的 Cmdlet 相關資料，例如：預設期間是 1 小時。
+        - 修正 #1：Cmdlet 現在會遵循後端傳回的接續 Token，直到達到 MaxEvents 或集合的結束為止。<br>MaxEvents 的預設值為 1000，最大值為 100000。 凡 MaxEvents 值小於 1 都會忽略，並改為使用預設值。 這些值和行為並未變更，現在都已正確地記錄。<br>由於 Cmdlet 名稱未說明相關事件，而只提供了記錄檔，因此已新增 MaxEvents 別名 -MaxRecords-。
+        - 修正 #2：文件包含正確及更詳細的資訊：新的別名、正確的期間、正確的預設值、最小值和最大值。
+* KeyVault
+    * 將 -UserPrincipalName 指定到 Set-AzureRMKeyVaultAccessPolicy 和 Remove-AzureRMKeyVaultAccessPolicy Cmdlet 時，請從目錄查詢中移除電子郵件地址。
+      - 兩個 Cmdlet 現在會有適當的 -EmailAddress 參數，在需要查詢電子郵件地址時可供使用，而不使用 -UserPrincipalName 參數。  如果目錄中有多個相符的電子郵件地址，則此 Cmdlet 的電子郵件地址將會失效。
+* 網路
+    * New-AzureRmIpsecPolicy：SALifeTimeSeconds 和 SADataSizeKilobytes 不再是必要參數
+        - SALifeTimeSeconds 預設值為 27000 秒
+        - SADataSizeKilobytes 預設值為 102400000 KB
+    * 使用 ssl 原則，並在應用程式閘道列出所有 ssl 選項 api，以新增支援自訂加密套件設定
+        - 新增選擇性參數 -PolicyType、-PolicyName、-MinProtocolVersion、-Ciphersuite
+            - Add-AzureRmApplicationGatewaySslPolicy
+            - New-AzureRmApplicationGatewaySslPolicy
+            - Set-AzureRmApplicationGatewaySslPolicy
+        - 新增 Get-AzureRmApplicationGatewayAvailableSslOptions (別名：List-AzureRmApplicationGatewayAvailableSslOptions)
+        - 新增 Get AzureRmApplicationGatewaySslPredefinedPolicy (別名：List-AzureRmApplicationGatewaySslPredefinedPolicy)
+    * 應用程式閘道中新增重新導向支援
+        - 新增 Add-AzureRmApplicationGatewayRedirectConfiguration
+        - 新增 Get-AzureRmApplicationGatewayRedirectConfiguration
+        - 新增 New-AzureRmApplicationGatewayRedirectConfiguration
+        - 新增 Remove-AzureRmApplicationGatewayRedirectConfiguration
+        - 新增 Set-AzureRmApplicationGatewayRedirectConfiguration
+        - 新增選擇性參數 -RedirectConfiguration
+            - Add-AzureRmApplicationGatewayRequestRoutingRule
+            - New-AzureRmApplicationGatewayRequestRoutingRule
+            - Set-AzureRmApplicationGatewayRequestRoutingRule
+        - 新增選擇性參數-DefaultRedirectConfiguration
+            - Add-AzureRmApplicationGatewayUrlPathMapConfig
+            - New-AzureRmApplicationGatewayUrlPathMapConfig
+            - Set-AzureRmApplicationGatewayUrlPathMapConfig
+        - 新增選擇性參數 -RedirectConfiguration
+            - Add-AzureRmApplicationGatewayPathRuleConfig
+            - New-AzureRmApplicationGatewayPathRuleConfig
+            - Set-AzureRmApplicationGatewayPathRuleConfig
+        - 新增選擇性參數 -RedirectConfigurations
+            - New-AzureRmApplicationGateway
+            - Set-AzureRmApplicationGateway
+    * 在應用程式閘道中新增支援 azure 網站
+        - 新增 New-AzureRmApplicationGatewayProbeHealthResponseMatch
+        - 新增選擇性參數 -PickHostNameFromBackendHttpSettings、-MinServers、-Match
+            - Add-AzureRmApplicationGatewayProbeConfig
+            - New-AzureRmApplicationGatewayProbeConfig
+            - Set-AzureRmApplicationGatewayProbeConfig
+        - 新增選擇性參數 -PickHostNameFromBackendAddress、-AffinityCookieName、-ProbeEnabled、-Path
+            - Add-AzureRmApplicationGatewayBackendHttpSettings
+            - New-AzureRmApplicationGatewayBackendHttpSettings
+            - Set-AzureRmApplicationGatewayBackendHttpSettings
+    * 更新 Get-AzureRmPublicIPaddress，以擷取透過 VM 擴展集建立的 publicipaddress 資源
+    * 新增 Cmdlet 取得虛擬網路的目前使用情形
+        - Get-AzureRmVirtualNetworkUsageList
+* 設定檔
+    * 修正使用 Import-AzureRmContext 或 Save-AzureRmContext 時的錯誤
+        - 詳細資訊可以在本問題找到 (英文)：https://github.com/Azure/azure-powershell/issues/3954
+* RecoveryServices.SiteRecovery
+    * 推出新的 Azure Site Recovery 作業模組。
+        - 所有 Cmdlet 的開頭均為 AzureRmRecoveryServicesAsr*
+* Sql
+    * 將資料同步 PowerShell Cmdlet 加入 AzureRM.Sql
+    * 更新 AzureRmSqlServer Cmdlet 以使用新的 REST API 版本，避免建立伺服器時發生逾時。
+    * 已取代的伺服器升級 Cmdlet，因為舊的伺服器版本 (2.0) 已經不存在。
+    * 將新的選擇性切換參數「AssignIdentity」加入 New-AzureRmSqlServer 和 Set-AzureRmSqlServer Cmdlet，以支援佈建 SQL 伺服器資源的資源身分識別
+    * 參數 ResourceGroupName 現在是 Get-AzureRmSqlServer 的選擇性項目
+        - 詳細資訊可在下列問題中找到 (英文)：https://github.com/Azure/azure-powershell/issues/635
+* ExpressRoute 的 ServiceManagement：
+    * 更新 New-AzureBgpPeering Cmdlet，新增下列選項：
+        - PeerAddressType：可指定「IPv4」或「IPv6」的值，以建立對應位址系列類型的 BGP 對等互連
+    * 更新 Set-AzureBgpPeering Cmdlet，新增下列選項：
+        - PeerAddressType：可指定「IPv4」或「IPv6」的值，以更新對應位址系列類型的 BGP 對等互連
+    * 更新 Remove-AzureBgpPeering Cmdlet，新增下列選項：
+        - PeerAddressType：可指定「IPv4」、「IPv6」或所有的值，以移除對應位址系列類型或所有的 BGP 對等互連
+
+## <a name="20170607---version-410"></a>2017.06.07 - 版本 4.1.0
+* AnalysisServices
+    * 新增的 SKU：B1、B2、S0
+    * 新增相應增加/減少支援
+* CognitiveServices
+    * 更新在建立辨識服務資源時的授權合約詳細顯示內容
+* 計算
+    * 針對具有多個受控磁碟的虛擬機器，修正 Test-AzureRmVMAEMExtension
+    * 更新 Set-AzureRmVMAEMExtension：新增進階受控磁碟的快取資訊
+    * Add-AzureRmVhd：vhd 的大小限制會增加至 4TB。
+    * Stop-AzureRmVM：釐清 STayProvisioned 參數的文件
+    * New-AzureRmDiskUpdateConfig
+      * 已取代的參數 CreateOption、StorageAccountId、ImageReference、SourceUri、SourceResourceId
+    * Set-AzureRmDiskUpdateImageReference：已取代的 Cmdlet
+    * New-AzureRmSnapshotUpdateConfig
+      * 已取代的參數 CreateOption、StorageAccountId、ImageReference、SourceUri、SourceResourceId
+    * Set-AzureRmSnapshotUpdateImageReference：已取代的 Cmdlet
+* DataLakeStore
+    * Enable-AzureRmDataLakeStoreKeyVault (Enable-AdlStoreKeyVault)
+      * 啟用 DataLake 存放區的 KeyVault 受控加密
+* DevTestLabs
+    * 更新 Cmdlet 以處理目前和更新的 DevTest Labs API 版本。
+* IotHub
+    * 新增 IoTHub Cmdlet 的路由支援
+* KeyVault
+  * 新的 Cmdlet，可支援 KeyVault 受控儲存體帳戶金鑰
+    * Get-AzureKeyVaultManagedStorageAccount
+    * Add-AzureKeyVaultManagedStorageAccount
+    * Remove-AzureKeyVaultManagedStorageAccount
+    * Update-AzureKeyVaultManagedStorageAccount
+    * Update-AzureKeyVaultManagedStorageAccountKey
+    * Get-AzureKeyVaultManagedStorageSasDefinition
+    * Set-AzureKeyVaultManagedStorageSasDefinition
+    * Remove-AzureKeyVaultManagedStorageSasDefinition
+* 網路
+    * Get-AzureRmNetworkUsage：新的 Cmdlet，可顯示網路使用量和容量詳細資料
+    * 新增 VirtualNetworkGateways 的 GatewaySku 選項
+        * VpnGw1、VpnGw2、VpnGw3 是針對 Vpn 閘道新增的 Sku
+    * Set-AzureRmNetworkWatcherConfigFlowLog
+      * 固定說明範例
+* NotificationHubs
+    * 針對新 API 的 NotificationHubs Cmdlet 進行透明更新
+* 設定檔
+    * Resolve-AzureRmError
+      * 新的 Cmdlet，可顯示詳細錯誤和 Cmdlet 產生的例外狀況，包括伺服器要求/回應資料
+    * Send-Feedback
+      * 啟用傳送意見反應而無須登入
+    * Get-AzureRmSubscription
+      * 修正擷取 CSP 訂用帳戶時的錯誤
+* 資源
+    * 已修正問題，其中若 roleassignments 的數字大於 1000，Get-AzureRMRoleAssignment 會導致錯誤的要求
+        * 現在即使要傳回的 roleassignments 大於 1000，使用者仍可使用 Get-AzureRMRoleAssignment
+* Sql
+    * Restore-AzureRmSqlDatabase：更新文件範例
+* 儲存體
+    * 在資源模式的儲存體帳戶 Cmdlet，新增 AssignIdentity 設定支援
+        * New-AzureRmStorageAccount
+        * Set-AzureRmStorageAccount
+    * 在資源模式的儲存體帳戶 Cmdlet，新增客戶金鑰支援
+        * Set-AzureRmStorageAccount
+        * New-AzureRmStorageAccountEncryptionKeySource
+* TrafficManager
+
+    * 新監視器設定「MonitorIntervalInSeconds」、「MonitorTimeoutInSeconds」、「MonitorToleratedNumberOfFailures」
+    * 新監視器通訊協定「TCP」
+* ServiceManagement
+    * Add-AzureVhd：vhd 的大小限制會增加至 4TB。
+    * New-AzureBGPPeering：支援 LegacyMode
+* Azure.Storage
+    * 針對可接受萬用字元的參數更新說明，並更新 StorageContext 類型
+
+## <a name="20170523---version-402"></a>2017.05.23 - 版本 4.0.2
+* 設定檔
+    * Add-AzureRmAccount
+      * 新增 `-EnvironmentName` 參數別名，以便回溯相容於 AzureRM.profile 的 2.x 版本
+
+## <a name="20170512---version-401"></a>2017.05.12 - 版本 4.0.1
+ * 修正離線情況下 New-AzureStorageContext 的問題 (英文)：https://github.com/Azure/azure-powershell/issues/3939
+
+## <a name="20170510---version-400"></a>2017.05.10 - 版本 4.0.0
+
 
 * 此版本包含重大變更。 如需變更詳細資料和對現有指令碼的影響，請參閱[移轉指南 (英文)](https://aka.ms/azps-migration-guide)。
 * ApiManagement
