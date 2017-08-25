@@ -1,5 +1,5 @@
 ---
-title: "<span data-ttu-id=\"94f09-101\">開始使用 Azure PowerShell | Microsoft Docs</span><span class=\"sxs-lookup\"><span data-stu-id=\"94f09-101\">Get started with Azure PowerShell | Microsoft Docs</span></span>"
+title: "開始使用 Azure PowerShell | Microsoft Docs"
 description: 
 services: azure
 author: sdwheeler
@@ -10,47 +10,42 @@ ms.service: azure-powershell
 ms.devlang: powershell
 ms.topic: get-started-article
 ms.date: 03/30/2017
-ms.openlocfilehash: 4bfa14f4f139fa8c35d4bb51ae81baea819188ce
-ms.sourcegitcommit: 226527be7cb647acfe2ea9ab151185053ab3c6db
+ms.openlocfilehash: f1c13317f0b42b547166a8130dd8c29bed5759c9
+ms.sourcegitcommit: db5c50de90764a9bdc7c1f1dbca3aed5bfeb05fa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/29/2017
+ms.lasthandoff: 08/22/2017
 ---
-# <span data-ttu-id="94f09-102">開始使用 Azure PowerShell</span><span class="sxs-lookup"><span data-stu-id="94f09-102">Getting started with Azure PowerShell</span></span>
-<a id="getting-started-with-azure-powershell" class="xliff"></a>
+# <a name="getting-started-with-azure-powershell"></a><span data-ttu-id="fc507-102">開始使用 Azure PowerShell</span><span class="sxs-lookup"><span data-stu-id="fc507-102">Getting started with Azure PowerShell</span></span>
 
-<span data-ttu-id="94f09-103">Azure PowerShell 的設計是為了讓您從命令列管理 Azure 資源，以及讓您建置可對 Azure Resource Manager 起作用的自動化指令碼。</span><span class="sxs-lookup"><span data-stu-id="94f09-103">Azure PowerShell is designed for managing and administering Azure resources from the command line, and for building automation scripts that work against the Azure Resource Manager.</span></span> <span data-ttu-id="94f09-104">本文可協助您開始使用 Azure PowerShell，並讓您知道其背後的核心概念。</span><span class="sxs-lookup"><span data-stu-id="94f09-104">This article helps get you started using it, and teaches you the core concepts behind it.</span></span>
+<span data-ttu-id="fc507-103">Azure PowerShell 的設計是為了讓您從命令列管理 Azure 資源，以及讓您建置可對 Azure Resource Manager 起作用的自動化指令碼。</span><span class="sxs-lookup"><span data-stu-id="fc507-103">Azure PowerShell is designed for managing and administering Azure resources from the command line, and for building automation scripts that work against the Azure Resource Manager.</span></span> <span data-ttu-id="fc507-104">本文可協助您開始使用 Azure PowerShell，並讓您知道其背後的核心概念。</span><span class="sxs-lookup"><span data-stu-id="fc507-104">This article helps get you started using it, and teaches you the core concepts behind it.</span></span>
 
+## <a name="install-azure-powershell"></a><span data-ttu-id="fc507-105">安裝 Azure PowerShell</span><span class="sxs-lookup"><span data-stu-id="fc507-105">Install Azure PowerShell</span></span>
 
-## <span data-ttu-id="94f09-105">安裝 Azure PowerShell</span><span class="sxs-lookup"><span data-stu-id="94f09-105">Install Azure PowerShell</span></span>
-<a id="install-azure-powershell" class="xliff"></a>
-<span data-ttu-id="94f09-106">第一步是確定您已安裝最新版的 Azure PowerShell。</span><span class="sxs-lookup"><span data-stu-id="94f09-106">The first step is to make sure you have the latest version of the Azure PowerShell installed.</span></span>  <span data-ttu-id="94f09-107">最新版為 4.1.0。</span><span class="sxs-lookup"><span data-stu-id="94f09-107">The latest version is 4.1.0.</span></span>
+<span data-ttu-id="fc507-106">第一步是確定您已安裝最新版的 Azure PowerShell。</span><span class="sxs-lookup"><span data-stu-id="fc507-106">The first step is to make sure you have the latest version of the Azure PowerShell installed.</span></span> <span data-ttu-id="fc507-107">如需最新版本的相關資訊，請參閱[版本資訊](./release-notes-azureps.md)。</span><span class="sxs-lookup"><span data-stu-id="fc507-107">For information about the latest release, see the [release notes](./release-notes-azureps.md).</span></span>
 
-1. <span data-ttu-id="94f09-108">[安裝 Azure PowerShell](install-azurerm-ps.md)。</span><span class="sxs-lookup"><span data-stu-id="94f09-108">[Install Azure PowerShell](install-azurerm-ps.md).</span></span>
+1. <span data-ttu-id="fc507-108">[安裝 Azure PowerShell](install-azurerm-ps.md)。</span><span class="sxs-lookup"><span data-stu-id="fc507-108">[Install Azure PowerShell](install-azurerm-ps.md).</span></span>
+2. <span data-ttu-id="fc507-109">若要確認安裝是否成功，請從命令列執行 `Get-Module AzureRM`。</span><span class="sxs-lookup"><span data-stu-id="fc507-109">To verify the installation was successful, run `Get-Module AzureRM` from your command line.</span></span>
 
-2. <span data-ttu-id="94f09-109">若要確認安裝是否成功，請從命令列執行 `Get-Module AzureRM`。</span><span class="sxs-lookup"><span data-stu-id="94f09-109">To verify the installation was successful, run `Get-Module AzureRM` from your command line.</span></span>
+## <a name="log-in-to-azure"></a><span data-ttu-id="fc507-110">登入 Azure</span><span class="sxs-lookup"><span data-stu-id="fc507-110">Log in to Azure</span></span>
 
+<span data-ttu-id="fc507-111">以互動方式登入︰</span><span class="sxs-lookup"><span data-stu-id="fc507-111">Sign on interactively:</span></span>
 
-## <span data-ttu-id="94f09-110">登入 Azure</span><span class="sxs-lookup"><span data-stu-id="94f09-110">Log in to Azure</span></span>
-<a id="log-in-to-azure" class="xliff"></a>
+1. <span data-ttu-id="fc507-112">輸入 `Login-AzureRmAccount`。</span><span class="sxs-lookup"><span data-stu-id="fc507-112">Type `Login-AzureRmAccount`.</span></span> <span data-ttu-id="fc507-113">您會看到對話方塊，裡面會要求您提供 Azure 認證。</span><span class="sxs-lookup"><span data-stu-id="fc507-113">You will get dialog box asking for your Azure credentials.</span></span> <span data-ttu-id="fc507-114">選項 [-EnvironmentName] 可以讓您登入 Azure China 或 Azure Germany。</span><span class="sxs-lookup"><span data-stu-id="fc507-114">Option '-EnvironmentName' can let you login in Azure China or Azure Germany.</span></span>
 
-<span data-ttu-id="94f09-111">以互動方式登入︰</span><span class="sxs-lookup"><span data-stu-id="94f09-111">Sign on interactively:</span></span>
+   <span data-ttu-id="fc507-115">例如 Login-AzureRmAccount -EnvironmentName AzureChinaCloud</span><span class="sxs-lookup"><span data-stu-id="fc507-115">e.g. Login-AzureRmAccount -EnvironmentName AzureChinaCloud</span></span>
 
-1. <span data-ttu-id="94f09-112">輸入 `Login-AzureRmAccount`。</span><span class="sxs-lookup"><span data-stu-id="94f09-112">Type `Login-AzureRmAccount`.</span></span>  <span data-ttu-id="94f09-113">您會看到對話方塊，裡面會要求您提供 Azure 認證。</span><span class="sxs-lookup"><span data-stu-id="94f09-113">You will get dialog box asking for your Azure credentials.</span></span> <span data-ttu-id="94f09-114">選項 [-EnvironmentName] 可以讓您登入 Azure China 或 Azure Germany。</span><span class="sxs-lookup"><span data-stu-id="94f09-114">Option '-EnvironmentName' can let you login in Azure China or Azure Germany.</span></span>
-   <span data-ttu-id="94f09-115">例如 Login-AzureRmAccount -EnvironmentName AzureChinaCloud</span><span class="sxs-lookup"><span data-stu-id="94f09-115">e.g. Login-AzureRmAccount -EnvironmentName AzureChinaCloud</span></span>
+2. <span data-ttu-id="fc507-116">輸入與您帳戶相關聯的電子郵件地址和密碼。</span><span class="sxs-lookup"><span data-stu-id="fc507-116">Type the email address and password associated with your account.</span></span> <span data-ttu-id="fc507-117">Azure 會驗證並儲存認證資訊，然後關閉視窗。</span><span class="sxs-lookup"><span data-stu-id="fc507-117">Azure authenticates and saves the credential information, and then closes the window.</span></span>
 
-2. <span data-ttu-id="94f09-116">輸入與您帳戶相關聯的電子郵件地址和密碼。</span><span class="sxs-lookup"><span data-stu-id="94f09-116">Type the email address and password associated with your account.</span></span> <span data-ttu-id="94f09-117">Azure 會驗證並儲存認證資訊，然後關閉視窗。</span><span class="sxs-lookup"><span data-stu-id="94f09-117">Azure authenticates and saves the credential information, and then closes the window.</span></span>
+<span data-ttu-id="fc507-118">在登入 Azure 帳戶後，您可以使用 Azure PowerShell Cmdlet 來存取和管理訂用帳戶中的資源。</span><span class="sxs-lookup"><span data-stu-id="fc507-118">Once you have signed in to an Azure account, you can use the Azure PowerShell cmdlets to access and manager the resources in your subscription.</span></span>
 
-<span data-ttu-id="94f09-118">在登入 Azure 帳戶後，您可以使用 Azure PowerShell Cmdlet 來存取和管理訂用帳戶中的資源。</span><span class="sxs-lookup"><span data-stu-id="94f09-118">Once you have signed in to an Azure account, you can use the Azure PowerShell cmdlets to access and manager the resources in your subscription.</span></span>
+## <a name="create-a-resource-group"></a><span data-ttu-id="fc507-119">建立資源群組</span><span class="sxs-lookup"><span data-stu-id="fc507-119">Create a resource group</span></span>
 
-## <span data-ttu-id="94f09-119">建立資源群組</span><span class="sxs-lookup"><span data-stu-id="94f09-119">Create a resource group</span></span>
-<a id="create-a-resource-group" class="xliff"></a>
+<span data-ttu-id="fc507-120">一切都已準備就緒，接下來我們要使用 Azure PowerShell 在 Azure 中建立資源。</span><span class="sxs-lookup"><span data-stu-id="fc507-120">Now that we've got everything set up, let's use Azure PowerShell to create resources within Azure.</span></span>
 
-<span data-ttu-id="94f09-120">一切都已準備就緒，接下來我們要使用 Azure PowerShell 在 Azure 中建立資源。</span><span class="sxs-lookup"><span data-stu-id="94f09-120">Now that we've got everything set up, let's use Azure PowerShell to create resources within Azure.</span></span>
+<span data-ttu-id="fc507-121">首先，建立資源群組。</span><span class="sxs-lookup"><span data-stu-id="fc507-121">First, create a Resource Group.</span></span> <span data-ttu-id="fc507-122">對於您想要以邏輯方式群組在一起的多個資源，Azure 的資源群組可讓您有辦法管理這些資源。</span><span class="sxs-lookup"><span data-stu-id="fc507-122">Resource Groups in Azure provide a way to manage multiple resources that you want to logically group together.</span></span> <span data-ttu-id="fc507-123">例如，您可以為應用程式或專案建立資源群組，並在該群組中新增虛擬機器、資料庫和 CDN 服務。</span><span class="sxs-lookup"><span data-stu-id="fc507-123">For example, you might create a Resource Group for an application or project and add a virtual machine, a database and a CDN service within it.</span></span>
 
-<span data-ttu-id="94f09-121">首先，建立資源群組。</span><span class="sxs-lookup"><span data-stu-id="94f09-121">First, create a Resource Group.</span></span> <span data-ttu-id="94f09-122">對於您想要以邏輯方式群組在一起的多個資源，Azure 的資源群組可讓您有辦法管理這些資源。</span><span class="sxs-lookup"><span data-stu-id="94f09-122">Resource Groups in Azure provide a way to manage multiple resources that you want to logically group together.</span></span> <span data-ttu-id="94f09-123">例如，您可以為應用程式或專案建立資源群組，並在該群組中新增虛擬機器、資料庫和 CDN 服務。</span><span class="sxs-lookup"><span data-stu-id="94f09-123">For example, you might create a Resource Group for an application or project and add a virtual machine, a database and a CDN service within it.</span></span>
-
-<span data-ttu-id="94f09-124">讓我們建立一個名為「MyResourceGroup」的資源群組，位置則定在 Azure 的 westeurope 區域。</span><span class="sxs-lookup"><span data-stu-id="94f09-124">Let's create a resource group named "MyResourceGroup" in the westeurope region of Azure.</span></span> <span data-ttu-id="94f09-125">若要這麼做，請輸入下列命令：</span><span class="sxs-lookup"><span data-stu-id="94f09-125">To do so type the following command:</span></span>
+<span data-ttu-id="fc507-124">讓我們建立一個名為「MyResourceGroup」的資源群組，位置則定在 Azure 的 westeurope 區域。</span><span class="sxs-lookup"><span data-stu-id="fc507-124">Let's create a resource group named "MyResourceGroup" in the westeurope region of Azure.</span></span> <span data-ttu-id="fc507-125">若要這麼做，請輸入下列命令：</span><span class="sxs-lookup"><span data-stu-id="fc507-125">To do so type the following command:</span></span>
 
 ```powershell
 New-AzureRmResourceGroup -Name 'myResourceGroup' -Location 'westeurope'
@@ -64,15 +59,13 @@ Tags              :
 ResourceId        : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/myResourceGroup
 ```
 
-## <span data-ttu-id="94f09-126">建立 Windows 虛擬機器</span><span class="sxs-lookup"><span data-stu-id="94f09-126">Create a Windows Virtual Machine</span></span>
-<a id="create-a-windows-virtual-machine" class="xliff"></a>
+## <a name="create-a-windows-virtual-machine"></a><span data-ttu-id="fc507-126">建立 Windows 虛擬機器</span><span class="sxs-lookup"><span data-stu-id="fc507-126">Create a Windows Virtual Machine</span></span>
 
-<span data-ttu-id="94f09-127">我們已擁有資源群組，接著我們要在其中建立 Windows VM。</span><span class="sxs-lookup"><span data-stu-id="94f09-127">Now that we have our resource group, let's create a Windows VM within it.</span></span> <span data-ttu-id="94f09-128">若要建立新的 VM，我們必須先建立其他必要資源，並將它們指派至某組態。</span><span class="sxs-lookup"><span data-stu-id="94f09-128">To create a new VM we must first create the other required resources and assign them to a configuration.</span></span> <span data-ttu-id="94f09-129">然後，我們可以使用該組態來建立 VM。</span><span class="sxs-lookup"><span data-stu-id="94f09-129">Then we can use that configuration to create the VM.</span></span>
+<span data-ttu-id="fc507-127">我們已擁有資源群組，接著我們要在其中建立 Windows VM。</span><span class="sxs-lookup"><span data-stu-id="fc507-127">Now that we have our resource group, let's create a Windows VM within it.</span></span> <span data-ttu-id="fc507-128">若要建立新的 VM，我們必須先建立其他必要資源，並將它們指派至某組態。</span><span class="sxs-lookup"><span data-stu-id="fc507-128">To create a new VM we must first create the other required resources and assign them to a configuration.</span></span> <span data-ttu-id="fc507-129">然後，我們可以使用該組態來建立 VM。</span><span class="sxs-lookup"><span data-stu-id="fc507-129">Then we can use that configuration to create the VM.</span></span>
 
-### <span data-ttu-id="94f09-130">建立必要的網路資源</span><span class="sxs-lookup"><span data-stu-id="94f09-130">Create the required network resources</span></span>
-<a id="create-the-required-network-resources" class="xliff"></a>
+### <a name="create-the-required-network-resources"></a><span data-ttu-id="fc507-130">建立必要的網路資源</span><span class="sxs-lookup"><span data-stu-id="fc507-130">Create the required network resources</span></span>
 
-<span data-ttu-id="94f09-131">首先，我們需要建立一個子網路組態，以用於虛擬網路的建立程序。</span><span class="sxs-lookup"><span data-stu-id="94f09-131">First we need to create a subnet configuration to be used with the virtual network creation process.</span></span> <span data-ttu-id="94f09-132">我們也會建立公用 IP 位址，以便可以連線到此 VM。</span><span class="sxs-lookup"><span data-stu-id="94f09-132">We also create a public IP address so that we can connect to this VM.</span></span> <span data-ttu-id="94f09-133">我們會建立網路安全性群組，來保護對於公用位址的存取。</span><span class="sxs-lookup"><span data-stu-id="94f09-133">We create a network security group to secure access to the public address.</span></span> <span data-ttu-id="94f09-134">最後，我們會使用前面的所有資源來建立虛擬 NIC。</span><span class="sxs-lookup"><span data-stu-id="94f09-134">Finally we create the virtual NIC using all of the previous resources.</span></span>
+<span data-ttu-id="fc507-131">首先，我們需要建立一個子網路組態，以用於虛擬網路的建立程序。</span><span class="sxs-lookup"><span data-stu-id="fc507-131">First we need to create a subnet configuration to be used with the virtual network creation process.</span></span> <span data-ttu-id="fc507-132">我們也會建立公用 IP 位址，以便可以連線到此 VM。</span><span class="sxs-lookup"><span data-stu-id="fc507-132">We also create a public IP address so that we can connect to this VM.</span></span> <span data-ttu-id="fc507-133">我們會建立網路安全性群組，來保護對於公用位址的存取。</span><span class="sxs-lookup"><span data-stu-id="fc507-133">We create a network security group to secure access to the public address.</span></span> <span data-ttu-id="fc507-134">最後，我們會使用前面的所有資源來建立虛擬 NIC。</span><span class="sxs-lookup"><span data-stu-id="fc507-134">Finally we create the virtual NIC using all of the previous resources.</span></span>
 
 ```powershell
 # Variables for common values
@@ -106,17 +99,16 @@ $nic = New-AzureRmNetworkInterface -Name myNic1 -ResourceGroupName $resourceGrou
   -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $publicIp.Id -NetworkSecurityGroupId $nsg.Id
 ```
 
-### <span data-ttu-id="94f09-135">建立虛擬機器</span><span class="sxs-lookup"><span data-stu-id="94f09-135">Create the virtual machine</span></span>
-<a id="create-the-virtual-machine" class="xliff"></a>
+### <a name="create-the-virtual-machine"></a><span data-ttu-id="fc507-135">建立虛擬機器</span><span class="sxs-lookup"><span data-stu-id="fc507-135">Create the virtual machine</span></span>
 
-<span data-ttu-id="94f09-136">首先，我們需要一組作業系統認證。</span><span class="sxs-lookup"><span data-stu-id="94f09-136">First we need a set of credentials for the OS.</span></span>
+<span data-ttu-id="fc507-136">首先，我們需要一組作業系統認證。</span><span class="sxs-lookup"><span data-stu-id="fc507-136">First we need a set of credentials for the OS.</span></span>
 
 ```powershell
 # Create user object
 $cred = Get-Credential -Message "Enter a username and password for the virtual machine."
 ```
 
-<span data-ttu-id="94f09-137">我們已擁有所需的資源，因此可以建立 VM 了。</span><span class="sxs-lookup"><span data-stu-id="94f09-137">Now that we have the required resources we can create the VM.</span></span> <span data-ttu-id="94f09-138">在此步驟中，我們會建立 VM 組態物件，然後使用該組態來建立 VM。</span><span class="sxs-lookup"><span data-stu-id="94f09-138">For this step, we create a VM configuration object, then we use the configuration to create the VM.</span></span>
+<span data-ttu-id="fc507-137">我們已擁有所需的資源，因此可以建立 VM 了。</span><span class="sxs-lookup"><span data-stu-id="fc507-137">Now that we have the required resources we can create the VM.</span></span> <span data-ttu-id="fc507-138">在此步驟中，我們會建立 VM 組態物件，然後使用該組態來建立 VM。</span><span class="sxs-lookup"><span data-stu-id="fc507-138">For this step, we create a VM configuration object, then we use the configuration to create the VM.</span></span>
 
 ```powershell
 # Create a virtual machine configuration
@@ -129,7 +121,7 @@ $vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize Standard_D1 |
 New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 ```
 
-<span data-ttu-id="94f09-139">在 VM 整個建立好並可供使用之後，`New-AzureRmVM` 命令會輸出結果。</span><span class="sxs-lookup"><span data-stu-id="94f09-139">The `New-AzureRmVM` command outputs results once the VM has been fully created and is ready to be used.</span></span>
+<span data-ttu-id="fc507-139">在 VM 整個建立好並可供使用之後，`New-AzureRmVM` 命令會輸出結果。</span><span class="sxs-lookup"><span data-stu-id="fc507-139">The `New-AzureRmVM` command outputs results once the VM has been fully created and is ready to be used.</span></span>
 
 ```
 RequestId IsSuccessStatusCode StatusCode ReasonPhrase
@@ -137,7 +129,7 @@ RequestId IsSuccessStatusCode StatusCode ReasonPhrase
                          True         OK OK
 ```
 
-<span data-ttu-id="94f09-140">現在，使用遠端桌面和 VM 的公用 IP 位址來登入新建立的 Windows Server VM。</span><span class="sxs-lookup"><span data-stu-id="94f09-140">Now log on to your newly created Windows Server VM using Remote Desktop and the public IP address of the VM.</span></span> <span data-ttu-id="94f09-141">下列命令會顯示前面的指令碼所建立的公用 IP 位址。</span><span class="sxs-lookup"><span data-stu-id="94f09-141">The following command displays the public IP address created in the previous script.</span></span>
+<span data-ttu-id="fc507-140">現在，使用遠端桌面和 VM 的公用 IP 位址來登入新建立的 Windows Server VM。</span><span class="sxs-lookup"><span data-stu-id="fc507-140">Now log on to your newly created Windows Server VM using Remote Desktop and the public IP address of the VM.</span></span> <span data-ttu-id="fc507-141">下列命令會顯示前面的指令碼所建立的公用 IP 位址。</span><span class="sxs-lookup"><span data-stu-id="fc507-141">The following command displays the public IP address created in the previous script.</span></span>
 
 ```powershell
 $publicIp | Select-Object Name,IpAddress
@@ -149,24 +141,22 @@ Name                  IpAddress
 mypublicdns1400512543 xx.xx.xx.xx
 ```
 
-<span data-ttu-id="94f09-142">如果您所在的系統是 Windows 架構，您可以從命令列使用 mstsc 命令來執行此作業︰</span><span class="sxs-lookup"><span data-stu-id="94f09-142">If you are on a Windows-based system, you can do this from the command line using the mstsc command:</span></span>
+<span data-ttu-id="fc507-142">如果您所在的系統是 Windows 架構，您可以從命令列使用 mstsc 命令來執行此作業︰</span><span class="sxs-lookup"><span data-stu-id="fc507-142">If you are on a Windows-based system, you can do this from the command line using the mstsc command:</span></span>
 
 ```
 mstsc /v:xx.xxx.xx.xxx
 ```
 
-<span data-ttu-id="94f09-143">提供您在建立 VM 時所使用的相同使用者名稱/密碼組合來進行登入。</span><span class="sxs-lookup"><span data-stu-id="94f09-143">Supply the same username/password combination you used when creating the VM to log in.</span></span>
+<span data-ttu-id="fc507-143">提供您在建立 VM 時所使用的相同使用者名稱/密碼組合來進行登入。</span><span class="sxs-lookup"><span data-stu-id="fc507-143">Supply the same username/password combination you used when creating the VM to log in.</span></span>
 
 
-## <span data-ttu-id="94f09-144">建立 Linux 虛擬機器</span><span class="sxs-lookup"><span data-stu-id="94f09-144">Create a Linux Virtual Machine</span></span>
-<a id="create-a-linux-virtual-machine" class="xliff"></a>
+## <a name="create-a-linux-virtual-machine"></a><span data-ttu-id="fc507-144">建立 Linux 虛擬機器</span><span class="sxs-lookup"><span data-stu-id="fc507-144">Create a Linux Virtual Machine</span></span>
 
-<span data-ttu-id="94f09-145">若要建立新的 Linux VM，我們必須先建立其他必要資源，並將它們指派至某組態。</span><span class="sxs-lookup"><span data-stu-id="94f09-145">To create a new Linux VM we must first create the other required resources and assign them to a configuration.</span></span> <span data-ttu-id="94f09-146">然後，我們可以使用該組態來建立 VM。</span><span class="sxs-lookup"><span data-stu-id="94f09-146">Then we can use that configuration to create the VM.</span></span> <span data-ttu-id="94f09-147">其假設前提是您已如先前所示方式建立了資源群組。</span><span class="sxs-lookup"><span data-stu-id="94f09-147">This assumes that you have already created the resource group as previously shown.</span></span> <span data-ttu-id="94f09-148">此外，您在使用者設定檔的 .ssh 目錄中需要有一個名為 `id_rsa.pub` 的 SSH 公開金鑰。</span><span class="sxs-lookup"><span data-stu-id="94f09-148">Also, you will need to have an SSH public key named `id_rsa.pub` in the .ssh directory of your user profile.</span></span>
+<span data-ttu-id="fc507-145">若要建立新的 Linux VM，我們必須先建立其他必要資源，並將它們指派至某組態。</span><span class="sxs-lookup"><span data-stu-id="fc507-145">To create a new Linux VM we must first create the other required resources and assign them to a configuration.</span></span> <span data-ttu-id="fc507-146">然後，我們可以使用該組態來建立 VM。</span><span class="sxs-lookup"><span data-stu-id="fc507-146">Then we can use that configuration to create the VM.</span></span> <span data-ttu-id="fc507-147">其假設前提是您已如先前所示方式建立了資源群組。</span><span class="sxs-lookup"><span data-stu-id="fc507-147">This assumes that you have already created the resource group as previously shown.</span></span> <span data-ttu-id="fc507-148">此外，您在使用者設定檔的 .ssh 目錄中需要有一個名為 `id_rsa.pub` 的 SSH 公開金鑰。</span><span class="sxs-lookup"><span data-stu-id="fc507-148">Also, you will need to have an SSH public key named `id_rsa.pub` in the .ssh directory of your user profile.</span></span>
 
-### <span data-ttu-id="94f09-149">建立必要的網路資源</span><span class="sxs-lookup"><span data-stu-id="94f09-149">Create the required network resources</span></span>
-<a id="create-the-required-network-resources" class="xliff"></a>
+### <a name="create-the-required-network-resources"></a><span data-ttu-id="fc507-149">建立必要的網路資源</span><span class="sxs-lookup"><span data-stu-id="fc507-149">Create the required network resources</span></span>
 
-<span data-ttu-id="94f09-150">首先，我們需要建立一個子網路組態，以用於虛擬網路的建立程序。</span><span class="sxs-lookup"><span data-stu-id="94f09-150">First we need to create a subnet configuration to be used with the virtual network creation process.</span></span> <span data-ttu-id="94f09-151">我們也會建立公用 IP 位址，以便可以連線到此 VM。</span><span class="sxs-lookup"><span data-stu-id="94f09-151">We also create a public IP address so that we can connect to this VM.</span></span> <span data-ttu-id="94f09-152">我們會建立網路安全性群組，來保護對於公用位址的存取。</span><span class="sxs-lookup"><span data-stu-id="94f09-152">We create a network security group to secure access to the public address.</span></span> <span data-ttu-id="94f09-153">最後，我們會使用前面的所有資源來建立虛擬 NIC。</span><span class="sxs-lookup"><span data-stu-id="94f09-153">Finally we create the virtual NIC using all of the previous resources.</span></span>
+<span data-ttu-id="fc507-150">首先，我們需要建立一個子網路組態，以用於虛擬網路的建立程序。</span><span class="sxs-lookup"><span data-stu-id="fc507-150">First we need to create a subnet configuration to be used with the virtual network creation process.</span></span> <span data-ttu-id="fc507-151">我們也會建立公用 IP 位址，以便可以連線到此 VM。</span><span class="sxs-lookup"><span data-stu-id="fc507-151">We also create a public IP address so that we can connect to this VM.</span></span> <span data-ttu-id="fc507-152">我們會建立網路安全性群組，來保護對於公用位址的存取。</span><span class="sxs-lookup"><span data-stu-id="fc507-152">We create a network security group to secure access to the public address.</span></span> <span data-ttu-id="fc507-153">最後，我們會使用前面的所有資源來建立虛擬 NIC。</span><span class="sxs-lookup"><span data-stu-id="fc507-153">Finally we create the virtual NIC using all of the previous resources.</span></span>
 
 ```powershell
 # Variables for common values
@@ -204,10 +194,9 @@ $nic = New-AzureRmNetworkInterface -Name myNic2 -ResourceGroupName $resourceGrou
   -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $publicIp.Id -NetworkSecurityGroupId $nsg.Id
 ```
 
-### <span data-ttu-id="94f09-154">建立虛擬機器</span><span class="sxs-lookup"><span data-stu-id="94f09-154">Create the virtual machine</span></span>
-<a id="create-the-virtual-machine" class="xliff"></a>
+### <a name="create-the-virtual-machine"></a><span data-ttu-id="fc507-154">建立虛擬機器</span><span class="sxs-lookup"><span data-stu-id="fc507-154">Create the virtual machine</span></span>
 
-<span data-ttu-id="94f09-155">我們已擁有所需的資源，因此可以建立 VM 了。</span><span class="sxs-lookup"><span data-stu-id="94f09-155">Now that we have the required resources we can create the VM.</span></span> <span data-ttu-id="94f09-156">在此步驟中，我們會建立 VM 組態物件，然後使用該組態來建立 VM。</span><span class="sxs-lookup"><span data-stu-id="94f09-156">For this step, we create a VM configuration object, then we use the configuration to create the VM.</span></span>
+<span data-ttu-id="fc507-155">我們已擁有所需的資源，因此可以建立 VM 了。</span><span class="sxs-lookup"><span data-stu-id="fc507-155">Now that we have the required resources we can create the VM.</span></span> <span data-ttu-id="fc507-156">在此步驟中，我們會建立 VM 組態物件，然後使用該組態來建立 VM。</span><span class="sxs-lookup"><span data-stu-id="fc507-156">For this step, we create a VM configuration object, then we use the configuration to create the VM.</span></span>
 
 ```powershell
 # Create a virtual machine configuration
@@ -224,7 +213,7 @@ Add-AzureRmVMSshPublicKey -VM $vmConfig -KeyData $sshPublicKey -Path "/home/azur
 New-AzureRmVM -ResourceGroupName $resourceGroup -Location $location -VM $vmConfig
 ```
 
-<span data-ttu-id="94f09-157">VM 已經建立好，因此您可以搭配使用 SSH 與您所建立之 VM 的公用 IP 位址，來登入新的 Linux VM︰</span><span class="sxs-lookup"><span data-stu-id="94f09-157">Now that the VM has been created, you can log on to your new Linux VM using SSH with the public IP address of the VM you created:</span></span>
+<span data-ttu-id="fc507-157">VM 已經建立好，因此您可以搭配使用 SSH 與您所建立之 VM 的公用 IP 位址，來登入新的 Linux VM︰</span><span class="sxs-lookup"><span data-stu-id="fc507-157">Now that the VM has been created, you can log on to your new Linux VM using SSH with the public IP address of the VM you created:</span></span>
 
 ```bash
 ssh xx.xxx.xxx.xxx
@@ -261,18 +250,17 @@ applicable law.
 my-login@MyLinuxVM:~$
 ```
 
-## <span data-ttu-id="94f09-158">在 Azure 中建立其他資源</span><span class="sxs-lookup"><span data-stu-id="94f09-158">Creating other resources in Azure</span></span>
-<a id="creating-other-resources-in-azure" class="xliff"></a>
+## <a name="creating-other-resources-in-azure"></a><span data-ttu-id="fc507-158">在 Azure 中建立其他資源</span><span class="sxs-lookup"><span data-stu-id="fc507-158">Creating other resources in Azure</span></span>
 
-<span data-ttu-id="94f09-159">我們已逐步瀏覽過如何建立資源群組、Linux VM 和 Windows Server VM。</span><span class="sxs-lookup"><span data-stu-id="94f09-159">We've now walked through how to create a Resource Group, a Linux VM, and a Windows Server VM.</span></span> <span data-ttu-id="94f09-160">您也可以建立其他許多類型的 Azure 資源。</span><span class="sxs-lookup"><span data-stu-id="94f09-160">You can create many other types of Azure resources as well.</span></span>
+<span data-ttu-id="fc507-159">我們已逐步瀏覽過如何建立資源群組、Linux VM 和 Windows Server VM。</span><span class="sxs-lookup"><span data-stu-id="fc507-159">We've now walked through how to create a Resource Group, a Linux VM, and a Windows Server VM.</span></span> <span data-ttu-id="fc507-160">您也可以建立其他許多類型的 Azure 資源。</span><span class="sxs-lookup"><span data-stu-id="fc507-160">You can create many other types of Azure resources as well.</span></span>
 
-<span data-ttu-id="94f09-161">例如，若要建立 Azure 網路負載平衡器，然後與我們新建立的 VM 相關聯，我們可以使用下列建立命令︰</span><span class="sxs-lookup"><span data-stu-id="94f09-161">For example, to create an Azure Network Load Balancer that we could then associate with our newly created VMs, we can use the following create command:</span></span>
+<span data-ttu-id="fc507-161">例如，若要建立 Azure 網路負載平衡器，然後與我們新建立的 VM 相關聯，我們可以使用下列建立命令︰</span><span class="sxs-lookup"><span data-stu-id="fc507-161">For example, to create an Azure Network Load Balancer that we could then associate with our newly created VMs, we can use the following create command:</span></span>
 
 ```powershell
 New-AzureRmLoadBalancer -Name MyLoadBalancer -ResourceGroupName myResourceGroup -Location westeurope
 ```
 
-<span data-ttu-id="94f09-162">我們也可以使用下列命令，為我們的基礎結構建立新的私人虛擬網路 (此網路在 Azure 中通常稱為「VNet」)︰</span><span class="sxs-lookup"><span data-stu-id="94f09-162">We could also create a new private Virtual Network (commonly referred to as a "VNet" within Azure) for our infrastructure using the following command:</span></span>
+<span data-ttu-id="fc507-162">我們也可以使用下列命令，為我們的基礎結構建立新的私人虛擬網路 (此網路在 Azure 中通常稱為「VNet」)︰</span><span class="sxs-lookup"><span data-stu-id="fc507-162">We could also create a new private Virtual Network (commonly referred to as a "VNet" within Azure) for our infrastructure using the following command:</span></span>
 
 ```powershell
 $subnetConfig = New-AzureRmVirtualNetworkSubnetConfig -Name mySubnet2 -AddressPrefix 10.0.0.0/16
@@ -280,9 +268,9 @@ $vnet = New-AzureRmVirtualNetwork -ResourceGroupName myResourceGroup -Location w
   -Name MYvNET3 -AddressPrefix 10.0.0.0/16 -Subnet $subnetConfig
 ```
 
-<span data-ttu-id="94f09-163">Azure 和 Azure PowerShell 的功能之所以強大，是因為它們不只能用來獲得雲端架構的基礎結構，還能用來建立受管理的平台服務。</span><span class="sxs-lookup"><span data-stu-id="94f09-163">What makes Azure and the Azure PowerShell powerful is that we can use it not just to get cloud-based infrastructure but also to create managed platform services.</span></span> <span data-ttu-id="94f09-164">受管理的平台服務也可以結合基礎結構來建置更強大的解決方案。</span><span class="sxs-lookup"><span data-stu-id="94f09-164">The managed platform services can also be combined with infrastructure to build even more powerful solutions.</span></span>
+<span data-ttu-id="fc507-163">Azure 和 Azure PowerShell 的功能之所以強大，是因為它們不只能用來獲得雲端架構的基礎結構，還能用來建立受管理的平台服務。</span><span class="sxs-lookup"><span data-stu-id="fc507-163">What makes Azure and the Azure PowerShell powerful is that we can use it not just to get cloud-based infrastructure but also to create managed platform services.</span></span> <span data-ttu-id="fc507-164">受管理的平台服務也可以結合基礎結構來建置更強大的解決方案。</span><span class="sxs-lookup"><span data-stu-id="fc507-164">The managed platform services can also be combined with infrastructure to build even more powerful solutions.</span></span>
 
-<span data-ttu-id="94f09-165">例如，您可以使用 Azure PowerShell 來建立 Azure AppService。</span><span class="sxs-lookup"><span data-stu-id="94f09-165">For example, you can use the Azure PowerShell to create an Azure AppService.</span></span> <span data-ttu-id="94f09-166">Azure AppService 是一種受管理的平台服務，它可讓您裝載 Web 應用程式，而不必擔心基礎結構的問題。</span><span class="sxs-lookup"><span data-stu-id="94f09-166">Azure AppService is a managed platform service that provides a great way to host web apps without having to worry about infrastructure.</span></span> <span data-ttu-id="94f09-167">在建立 Azure AppService 之後，您可以使用下列命令在 AppService 內建立兩個新的 Azure Web Apps︰</span><span class="sxs-lookup"><span data-stu-id="94f09-167">After creating the Azure AppService, you can create two new Azure Web Apps within the AppService using the following commands:</span></span>
+<span data-ttu-id="fc507-165">例如，您可以使用 Azure PowerShell 來建立 Azure AppService。</span><span class="sxs-lookup"><span data-stu-id="fc507-165">For example, you can use the Azure PowerShell to create an Azure AppService.</span></span> <span data-ttu-id="fc507-166">Azure AppService 是一種受管理的平台服務，它可讓您裝載 Web 應用程式，而不必擔心基礎結構的問題。</span><span class="sxs-lookup"><span data-stu-id="fc507-166">Azure AppService is a managed platform service that provides a great way to host web apps without having to worry about infrastructure.</span></span> <span data-ttu-id="fc507-167">在建立 Azure AppService 之後，您可以使用下列命令在 AppService 內建立兩個新的 Azure Web Apps︰</span><span class="sxs-lookup"><span data-stu-id="fc507-167">After creating the Azure AppService, you can create two new Azure Web Apps within the AppService using the following commands:</span></span>
 
 ```powershell
 # Create an Azure AppService that we can host any number of web apps within
@@ -293,10 +281,9 @@ New-AzureRmWebApp -Name MyWebApp43432 -AppServicePlan MyAppServicePlan -Resource
 New-AzureRmWebApp -Name MyWebApp43433 -AppServicePlan MyAppServicePlan -ResourceGroupName myResourceGroup -Location westeurope
 ```
 
-## <span data-ttu-id="94f09-168">列出已部署的資源</span><span class="sxs-lookup"><span data-stu-id="94f09-168">Listing deployed resources</span></span>
-<a id="listing-deployed-resources" class="xliff"></a>
+## <a name="listing-deployed-resources"></a><span data-ttu-id="fc507-168">列出已部署的資源</span><span class="sxs-lookup"><span data-stu-id="fc507-168">Listing deployed resources</span></span>
 
-<span data-ttu-id="94f09-169">您可以使用 `Get-AzureRmResource` Cmdlet 來列出 Azure 內所執行的資源。</span><span class="sxs-lookup"><span data-stu-id="94f09-169">You can use the `Get-AzureRmResource` cmdlet to list the resources running in Azure.</span></span> <span data-ttu-id="94f09-170">下列範例顯示我們剛才在新的資源群組中所建立的資源。</span><span class="sxs-lookup"><span data-stu-id="94f09-170">The following example shows the resources we just created in the new resource group.</span></span>
+<span data-ttu-id="fc507-169">您可以使用 `Get-AzureRmResource` Cmdlet 來列出 Azure 內所執行的資源。</span><span class="sxs-lookup"><span data-stu-id="fc507-169">You can use the `Get-AzureRmResource` cmdlet to list the resources running in Azure.</span></span> <span data-ttu-id="fc507-170">下列範例顯示我們剛才在新的資源群組中所建立的資源。</span><span class="sxs-lookup"><span data-stu-id="fc507-170">The following example shows the resources we just created in the new resource group.</span></span>
 
 ```powershell
 Get-AzureRmResource |
@@ -323,16 +310,15 @@ MYvNET2                                               westeurope Microsoft.Netwo
 micromyresomywi032907510                              westeurope Microsoft.Storage/storageAccounts
 ```
 
-## <span data-ttu-id="94f09-171">刪除資源</span><span class="sxs-lookup"><span data-stu-id="94f09-171">Deleting resources</span></span>
-<a id="deleting-resources" class="xliff"></a>
+## <a name="deleting-resources"></a><span data-ttu-id="fc507-171">刪除資源</span><span class="sxs-lookup"><span data-stu-id="fc507-171">Deleting resources</span></span>
 
-<span data-ttu-id="94f09-172">為了清除 Azure 帳戶，您想要移除我們已在此範例中建立的資源。</span><span class="sxs-lookup"><span data-stu-id="94f09-172">To clean up your Azure account, you want to remove the resources we created in this example.</span></span> <span data-ttu-id="94f09-173">您可以使用 `Remove-AzureRm*` Cmdlet 來刪除您不再需要的資源。</span><span class="sxs-lookup"><span data-stu-id="94f09-173">You can use the `Remove-AzureRm*` cmdlets to delete the resources you no longer need.</span></span> <span data-ttu-id="94f09-174">若要移除我們已建立的 Windows VM，請使用下列命令︰</span><span class="sxs-lookup"><span data-stu-id="94f09-174">To remove the Windows VM we created, using the following command:</span></span>
+<span data-ttu-id="fc507-172">為了清除 Azure 帳戶，您想要移除我們已在此範例中建立的資源。</span><span class="sxs-lookup"><span data-stu-id="fc507-172">To clean up your Azure account, you want to remove the resources we created in this example.</span></span> <span data-ttu-id="fc507-173">您可以使用 `Remove-AzureRm*` Cmdlet 來刪除您不再需要的資源。</span><span class="sxs-lookup"><span data-stu-id="fc507-173">You can use the `Remove-AzureRm*` cmdlets to delete the resources you no longer need.</span></span> <span data-ttu-id="fc507-174">若要移除我們已建立的 Windows VM，請使用下列命令︰</span><span class="sxs-lookup"><span data-stu-id="fc507-174">To remove the Windows VM we created, using the following command:</span></span>
 
 ```powershell
 Remove-AzureRmVM -Name myWindowsVM -ResourceGroupName myResourceGroup
 ```
 
-<span data-ttu-id="94f09-175">系統會提示您確認您想要移除資源。</span><span class="sxs-lookup"><span data-stu-id="94f09-175">You will be prompted to confirm that you want to remove the resource.</span></span>
+<span data-ttu-id="fc507-175">系統會提示您確認您想要移除資源。</span><span class="sxs-lookup"><span data-stu-id="fc507-175">You will be prompted to confirm that you want to remove the resource.</span></span>
 
 ```
 Confirm
@@ -340,7 +326,7 @@ Are you sure you want to remove resource group 'myResourceGroup'
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
 ```
 
-<span data-ttu-id="94f09-176">您也可以一次刪除許多資源。</span><span class="sxs-lookup"><span data-stu-id="94f09-176">You can also use the delete many resources at one time.</span></span> <span data-ttu-id="94f09-177">例如，下列命令會將資源群組「MyResourceGroup」整個刪除，之前我們將這個群組用於此快速入門教學課程中的所有範例。</span><span class="sxs-lookup"><span data-stu-id="94f09-177">For example, the following command deletes all the resource group "MyResourceGroup" that we've used for all the samples in this Get Started tutorial.</span></span> <span data-ttu-id="94f09-178">這會移除資源群組和其中的所有資源。</span><span class="sxs-lookup"><span data-stu-id="94f09-178">This removes the resource group and all of the resources in it.</span></span>
+<span data-ttu-id="fc507-176">您也可以一次刪除許多資源。</span><span class="sxs-lookup"><span data-stu-id="fc507-176">You can also use the delete many resources at one time.</span></span> <span data-ttu-id="fc507-177">例如，下列命令會將資源群組「MyResourceGroup」整個刪除，之前我們將這個群組用於此快速入門教學課程中的所有範例。</span><span class="sxs-lookup"><span data-stu-id="fc507-177">For example, the following command deletes all the resource group "MyResourceGroup" that we've used for all the samples in this Get Started tutorial.</span></span> <span data-ttu-id="fc507-178">這會移除資源群組和其中的所有資源。</span><span class="sxs-lookup"><span data-stu-id="fc507-178">This removes the resource group and all of the resources in it.</span></span>
 
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup
@@ -352,20 +338,18 @@ Are you sure you want to remove resource group 'myResourceGroup'
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
 ```
 
-<span data-ttu-id="94f09-179">這可能需要數分鐘的時間才能完成。</span><span class="sxs-lookup"><span data-stu-id="94f09-179">This can take several minutes to complete.</span></span>
+<span data-ttu-id="fc507-179">這可能需要數分鐘的時間才能完成。</span><span class="sxs-lookup"><span data-stu-id="fc507-179">This can take several minutes to complete.</span></span>
 
-## <span data-ttu-id="94f09-180">取得範例</span><span class="sxs-lookup"><span data-stu-id="94f09-180">Get samples</span></span>
-<a id="get-samples" class="xliff"></a>
+## <a name="get-samples"></a><span data-ttu-id="fc507-180">取得範例</span><span class="sxs-lookup"><span data-stu-id="fc507-180">Get samples</span></span>
 
-<span data-ttu-id="94f09-181">若要深入了解如何使用 Azure PowerShell，請參閱我們針對 [Linux VM](/azure/virtual-machines/virtual-machines-linux-powershell-samples?toc=%2fpowershell%2fazure%%2ftoc.json)、[Windows VM](/azure/virtual-machines/virtual-machines-windows-powershell-samples?toc=%2fpowershell%2fazure%%2ftoc.json)、[Web Apps](/azure/app-service-web/app-service-powershell-samples?toc=%2fpowershell%2fazure%%2ftoc.json) 和 [SQL Database](/azure/sql-database/sql-database-powershell-samples?toc=%2fpowershell%2fazure%%2ftoc.json) 所提供的最常見指令碼。</span><span class="sxs-lookup"><span data-stu-id="94f09-181">To learn more about ways to use the Azure PowerShell, check out our most common scripts for [Linux VMs](/azure/virtual-machines/virtual-machines-linux-powershell-samples?toc=%2fpowershell%2fazure%%2ftoc.json), [Windows VMs](/azure/virtual-machines/virtual-machines-windows-powershell-samples?toc=%2fpowershell%2fazure%%2ftoc.json), [Web Apps](/azure/app-service-web/app-service-powershell-samples?toc=%2fpowershell%2fazure%%2ftoc.json), and [SQL Databases](/azure/sql-database/sql-database-powershell-samples?toc=%2fpowershell%2fazure%%2ftoc.json).</span></span>
+<span data-ttu-id="fc507-181">若要深入了解如何使用 Azure PowerShell，請參閱我們針對 [Linux VM](/azure/virtual-machines/virtual-machines-linux-powershell-samples?toc=%2fpowershell%2fazure%%2ftoc.json)、[Windows VM](/azure/virtual-machines/virtual-machines-windows-powershell-samples?toc=%2fpowershell%2fazure%%2ftoc.json)、[Web Apps](/azure/app-service-web/app-service-powershell-samples?toc=%2fpowershell%2fazure%%2ftoc.json) 和 [SQL Database](/azure/sql-database/sql-database-powershell-samples?toc=%2fpowershell%2fazure%%2ftoc.json) 所提供的最常見指令碼。</span><span class="sxs-lookup"><span data-stu-id="fc507-181">To learn more about ways to use the Azure PowerShell, check out our most common scripts for [Linux VMs](/azure/virtual-machines/virtual-machines-linux-powershell-samples?toc=%2fpowershell%2fazure%%2ftoc.json), [Windows VMs](/azure/virtual-machines/virtual-machines-windows-powershell-samples?toc=%2fpowershell%2fazure%%2ftoc.json), [Web Apps](/azure/app-service-web/app-service-powershell-samples?toc=%2fpowershell%2fazure%%2ftoc.json), and [SQL Databases](/azure/sql-database/sql-database-powershell-samples?toc=%2fpowershell%2fazure%%2ftoc.json).</span></span>
 
-## <span data-ttu-id="94f09-182">後續步驟</span><span class="sxs-lookup"><span data-stu-id="94f09-182">Next steps</span></span>
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a><span data-ttu-id="fc507-182">後續步驟</span><span class="sxs-lookup"><span data-stu-id="fc507-182">Next steps</span></span>
 
-* [<span data-ttu-id="94f09-183">使用 Azure PowerShell 來登入</span><span class="sxs-lookup"><span data-stu-id="94f09-183">Login with Azure PowerShell</span></span>](authenticate-azureps.md)
-* [<span data-ttu-id="94f09-184">使用 Azure PowerShell 來管理 Azure 訂用帳戶</span><span class="sxs-lookup"><span data-stu-id="94f09-184">Manage Azure subscriptions with Azure PowerShell</span></span>](manage-subscriptions-azureps.md)
-* [<span data-ttu-id="94f09-185">使用 Azure PowerShell 在 Azure 中建立服務主體</span><span class="sxs-lookup"><span data-stu-id="94f09-185">Create service principals in Azure using Azure PowerShell</span></span>](create-azure-service-principal-azureps.md)
-* <span data-ttu-id="94f09-186">閱讀有關從舊版移轉的版本資訊︰[https://github.com/Azure/azure-powershell/tree/dev/documentation/release-notes](https://github.com/Azure/azure-powershell/tree/dev/documentation/release-notes)。</span><span class="sxs-lookup"><span data-stu-id="94f09-186">Read the Release notes about migrating from an older release: [https://github.com/Azure/azure-powershell/tree/dev/documentation/release-notes](https://github.com/Azure/azure-powershell/tree/dev/documentation/release-notes).</span></span>
-* <span data-ttu-id="94f09-187">從社群獲得協助︰</span><span class="sxs-lookup"><span data-stu-id="94f09-187">Get help from the community:</span></span>
-  + [<span data-ttu-id="94f09-188">MSDN 上的 Azure 論壇</span><span class="sxs-lookup"><span data-stu-id="94f09-188">Azure forum on MSDN</span></span>](http://go.microsoft.com/fwlink/p/?LinkId=320212)
-  + [<span data-ttu-id="94f09-189">stackoverflow</span><span class="sxs-lookup"><span data-stu-id="94f09-189">stackoverflow</span></span>](http://go.microsoft.com/fwlink/?LinkId=320213)
+* [<span data-ttu-id="fc507-183">使用 Azure PowerShell 來登入</span><span class="sxs-lookup"><span data-stu-id="fc507-183">Login with Azure PowerShell</span></span>](authenticate-azureps.md)
+* [<span data-ttu-id="fc507-184">使用 Azure PowerShell 來管理 Azure 訂用帳戶</span><span class="sxs-lookup"><span data-stu-id="fc507-184">Manage Azure subscriptions with Azure PowerShell</span></span>](manage-subscriptions-azureps.md)
+* [<span data-ttu-id="fc507-185">使用 Azure PowerShell 在 Azure 中建立服務主體</span><span class="sxs-lookup"><span data-stu-id="fc507-185">Create service principals in Azure using Azure PowerShell</span></span>](create-azure-service-principal-azureps.md)
+* <span data-ttu-id="fc507-186">閱讀有關從舊版移轉的版本資訊︰[https://github.com/Azure/azure-powershell/tree/dev/documentation/release-notes](https://github.com/Azure/azure-powershell/tree/dev/documentation/release-notes)。</span><span class="sxs-lookup"><span data-stu-id="fc507-186">Read the Release notes about migrating from an older release: [https://github.com/Azure/azure-powershell/tree/dev/documentation/release-notes](https://github.com/Azure/azure-powershell/tree/dev/documentation/release-notes).</span></span>
+* <span data-ttu-id="fc507-187">從社群獲得協助︰</span><span class="sxs-lookup"><span data-stu-id="fc507-187">Get help from the community:</span></span>
+  + [<span data-ttu-id="fc507-188">MSDN 上的 Azure 論壇</span><span class="sxs-lookup"><span data-stu-id="fc507-188">Azure forum on MSDN</span></span>](http://go.microsoft.com/fwlink/p/?LinkId=320212)
+  + [<span data-ttu-id="fc507-189">stackoverflow</span><span class="sxs-lookup"><span data-stu-id="fc507-189">stackoverflow</span></span>](http://go.microsoft.com/fwlink/?LinkId=320213)
