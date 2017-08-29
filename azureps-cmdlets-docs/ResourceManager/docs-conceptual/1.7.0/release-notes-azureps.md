@@ -17,13 +17,11 @@ ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 06/29/2017
 ---
-# <span data-ttu-id="a2671-103">版本資訊</span><span class="sxs-lookup"><span data-stu-id="a2671-103">Release notes</span></span>
-<a id="release-notes" class="xliff"></a>
+# <a name="release-notes"></a><span data-ttu-id="a2671-103">版本資訊</span><span class="sxs-lookup"><span data-stu-id="a2671-103">Release notes</span></span>
 
 <span data-ttu-id="a2671-104">這是此版本中對 Azure PowerShell 所做的變更清單。</span><span class="sxs-lookup"><span data-stu-id="a2671-104">This is a list of changes made to Azure PowerShell in this release.</span></span>
 
-## <span data-ttu-id="a2671-105">1.7.0 版</span><span class="sxs-lookup"><span data-stu-id="a2671-105">Version 1.7.0</span></span>
-<a id="version-170" class="xliff"></a>
+## <a name="version-170"></a><span data-ttu-id="a2671-105">1.7.0 版</span><span class="sxs-lookup"><span data-stu-id="a2671-105">Version 1.7.0</span></span>
 
 * <span data-ttu-id="a2671-106">**所有 Cmdlet 的 -Force、–Confirm 和 $ConfirmPreference 參數行為變更我們正根據 PowerShell 指導方針變更此實作。對於大多數的 Cmdlet 而言，這表示移除 Force 參數，而要略過 ShouldProcess 提示，使用者必須在其 PowerShell 指令碼中包含 ‘-Confirm:$false’ 參數。**</span><span class="sxs-lookup"><span data-stu-id="a2671-106">**Behavioral change for -Force, –Confirm and $ConfirmPreference parameters for all cmdlets. We are changing this implementation to be in line with PowerShell guidelines. For most cmdlets, this means removing the Force parameter and to skip the ShouldProcess prompt, users will need to include the parameter: ‘-Confirm:$false’ in their PowerShell scripts.**</span></span> <span data-ttu-id="a2671-107">此變更可處理下列問題︰</span><span class="sxs-lookup"><span data-stu-id="a2671-107">This changes are addressing following issues:</span></span>
   - <span data-ttu-id="a2671-108">正確實作 –WhatIf 功能，可讓使用者判斷 Cmdlet 或指令碼的效果，而不需進行任何實際的變更</span><span class="sxs-lookup"><span data-stu-id="a2671-108">Correct implementation of –WhatIf functionality, allowing a user to determine the effects of a cmdlet or script without making any actual changes</span></span>

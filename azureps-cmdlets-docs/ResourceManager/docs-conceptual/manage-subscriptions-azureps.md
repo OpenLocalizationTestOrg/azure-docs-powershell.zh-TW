@@ -16,8 +16,7 @@ ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 06/29/2017
 ---
-# <span data-ttu-id="bd63a-104">管理多個 Azure 訂用帳戶</span><span class="sxs-lookup"><span data-stu-id="bd63a-104">Manage multiple Azure subscriptions</span></span>
-<a id="manage-multiple-azure-subscriptions" class="xliff"></a>
+# <a name="manage-multiple-azure-subscriptions"></a><span data-ttu-id="bd63a-104">管理多個 Azure 訂用帳戶</span><span class="sxs-lookup"><span data-stu-id="bd63a-104">Manage multiple Azure subscriptions</span></span>
 
 <span data-ttu-id="bd63a-105">如果您是 Azure 的新手，可能只會擁有單一訂用帳戶。</span><span class="sxs-lookup"><span data-stu-id="bd63a-105">If you are brand new to Azure, you probably only have a single subscription.</span></span> <span data-ttu-id="bd63a-106">但是，如果您已使用 Azure 一段時間，可能已建立了多個 Azure 訂用帳戶。</span><span class="sxs-lookup"><span data-stu-id="bd63a-106">But if you have been using Azure for a while, you may have created multiple Azure subscriptions.</span></span> <span data-ttu-id="bd63a-107">您可以將 Azure PowerShell 設定為針對特定訂用帳戶來執行命令。</span><span class="sxs-lookup"><span data-stu-id="bd63a-107">You can configure Azure PowerShell to execute commands against a particular subscription.</span></span>
 

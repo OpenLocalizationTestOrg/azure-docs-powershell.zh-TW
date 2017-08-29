@@ -1,7 +1,7 @@
 ---
-title: "<span data-ttu-id=\"adf18-101\">使用 Azure PowerShell 來建立 Azure 服務主體</span><span class=\"sxs-lookup\"><span data-stu-id=\"adf18-101\">Create an Azure service principal with Azure PowerShell</span></span>"
-description: "<span data-ttu-id=\"adf18-102\">了解如何使用 Azure PowerShell 來為應用程式或服務建立服務主體。</span><span class=\"sxs-lookup\"><span data-stu-id=\"adf18-102\">Learn how to create a service principal for your app or service with Azure PowerShell.</span></span>"
-keywords: <span data-ttu-id="adf18-103">Azure PowerShell, Azure Active Directory, Azure Active directory, AD, RBAC</span><span class="sxs-lookup"><span data-stu-id="adf18-103">Azure PowerShell, Azure Active Directory, Azure Active directory, AD, RBAC</span></span>
+title: "使用 Azure PowerShell 來建立 Azure 服務主體"
+description: "了解如何使用 Azure PowerShell 來為應用程式或服務建立服務主體。"
+keywords: Azure PowerShell, Azure Active Directory, Azure Active directory, AD, RBAC
 services: azure
 author: sdwheeler
 ms.author: sewhee
@@ -17,36 +17,31 @@ ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 06/29/2017
 ---
-# <span data-ttu-id="adf18-104">使用 Azure PowerShell 來建立 Azure 服務主體</span><span class="sxs-lookup"><span data-stu-id="adf18-104">Create an Azure service principal with Azure PowerShell</span></span>
-<a id="create-an-azure-service-principal-with-azure-powershell" class="xliff"></a>
+# <a name="create-an-azure-service-principal-with-azure-powershell"></a><span data-ttu-id="adf18-104">使用 Azure PowerShell 來建立 Azure 服務主體</span><span class="sxs-lookup"><span data-stu-id="adf18-104">Create an Azure service principal with Azure PowerShell</span></span>
 
 <span data-ttu-id="adf18-105">如果您打算使用 Azure PowerShell 來管理應用程式或服務，請根據 Azure Active Directory (AAD) 服務主體 (而非您自己的認證) 來執行它。</span><span class="sxs-lookup"><span data-stu-id="adf18-105">If you plan to manage your app or service with Azure PowerShell, you should run it under an Azure Active Directory (AAD) service principal, rather than your own credentials.</span></span> <span data-ttu-id="adf18-106">本主題會逐步引導您使用 Azure PowerShell 來建立安全性主體。</span><span class="sxs-lookup"><span data-stu-id="adf18-106">This topic steps you through creating a security principal with Azure PowerShell.</span></span>
 
 > [!NOTE]
 > <span data-ttu-id="adf18-107">您也可以透過 Azure 入口網站來建立服務主體。</span><span class="sxs-lookup"><span data-stu-id="adf18-107">You can also create a service principal through the Azure portal.</span></span> <span data-ttu-id="adf18-108">如需詳細資訊，請閱讀[使用入口網站來建立可存取資源的 Active Directory 應用程式和服務主體](/azure/azure-resource-manager/resource-group-create-service-principal-portal)。</span><span class="sxs-lookup"><span data-stu-id="adf18-108">Read [Use portal to create Active Directory application and service principal that can access resources](/azure/azure-resource-manager/resource-group-create-service-principal-portal) for more details.</span></span>
 
-## <span data-ttu-id="adf18-109">何謂「服務主體」？</span><span class="sxs-lookup"><span data-stu-id="adf18-109">What is a 'service principal'?</span></span>
-<a id="what-is-a-service-principal" class="xliff"></a>
+## <a name="what-is-a-service-principal"></a><span data-ttu-id="adf18-109">何謂「服務主體」？</span><span class="sxs-lookup"><span data-stu-id="adf18-109">What is a 'service principal'?</span></span>
 
 <span data-ttu-id="adf18-110">Azure 服務主體是一項安全性身分識別，可供使用者所建立的應用程式、服務和自動化工具用來存取特定 Azure 資源。</span><span class="sxs-lookup"><span data-stu-id="adf18-110">An Azure service principal is a security identity used by user-created apps, services, and automation tools to access specific Azure resources.</span></span> <span data-ttu-id="adf18-111">您可以把它想成是具有特定角色及嚴格控制權限的「使用者身分識別」(使用者名稱和密碼或憑證)。</span><span class="sxs-lookup"><span data-stu-id="adf18-111">Think of it as a 'user identity' (username and password or certificate) with a specific role, and tightly controlled permissions.</span></span> <span data-ttu-id="adf18-112">不同於一般的使用者身分識別，服務主體只需要能夠執行特定動作。</span><span class="sxs-lookup"><span data-stu-id="adf18-112">It only needs to be able to do specific things, unlike a general user identity.</span></span> <span data-ttu-id="adf18-113">如果您只對服務主體授與它為了執行管理工作所需要的最低權限等級，它就能提高安全性。</span><span class="sxs-lookup"><span data-stu-id="adf18-113">It improves security if you only grant it the minimum permissions level needed to perform its management tasks.</span></span>
 
-## <span data-ttu-id="adf18-114">確認您自己的權限等級</span><span class="sxs-lookup"><span data-stu-id="adf18-114">Verify your own permission level</span></span>
-<a id="verify-your-own-permission-level" class="xliff"></a>
+## <a name="verify-your-own-permission-level"></a><span data-ttu-id="adf18-114">確認您自己的權限等級</span><span class="sxs-lookup"><span data-stu-id="adf18-114">Verify your own permission level</span></span>
 
 <span data-ttu-id="adf18-115">首先，您在 Azure Active Directory 和 Azure 訂用帳戶中都必須有足夠的權限。</span><span class="sxs-lookup"><span data-stu-id="adf18-115">First, you must have sufficient permissions in both your Azure Active Directory and your Azure subscription.</span></span> <span data-ttu-id="adf18-116">具體來說，您必須能夠在 Active Directory 中建立應用程式，並將角色指派給服務主體。</span><span class="sxs-lookup"><span data-stu-id="adf18-116">Specifically, you must be able to create an app in the Active Directory, and assign a role to the service principal.</span></span>
 
 <span data-ttu-id="adf18-117">檢查您的帳戶是否具有足夠的權限，最簡單的方式是透過入口網站。</span><span class="sxs-lookup"><span data-stu-id="adf18-117">The easiest way to check whether your account has adequate permissions is through the portal.</span></span> <span data-ttu-id="adf18-118">請參閱[在入口網站中檢查必要的權限](/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions)。</span><span class="sxs-lookup"><span data-stu-id="adf18-118">See [Check required permission in portal](/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions).</span></span>
 
-## <span data-ttu-id="adf18-119">建立應用程式的服務主體</span><span class="sxs-lookup"><span data-stu-id="adf18-119">Create a service principal for your app</span></span>
-<a id="create-a-service-principal-for-your-app" class="xliff"></a>
+## <a name="create-a-service-principal-for-your-app"></a><span data-ttu-id="adf18-119">建立應用程式的服務主體</span><span class="sxs-lookup"><span data-stu-id="adf18-119">Create a service principal for your app</span></span>
 
 <span data-ttu-id="adf18-120">在登入 Azure 帳戶之後，您便可以建立服務主體。</span><span class="sxs-lookup"><span data-stu-id="adf18-120">Once you are signed into your Azure account, you can create the service principal.</span></span> <span data-ttu-id="adf18-121">您必須具備下列其中一種用來識別已部署之應用程式的方式︰</span><span class="sxs-lookup"><span data-stu-id="adf18-121">You must have one of the following ways to identify your deployed app:</span></span>
 
 * <span data-ttu-id="adf18-122">已部署之應用程式的唯一名稱，例如下列範例的「MyDemoWebApp」，或是</span><span class="sxs-lookup"><span data-stu-id="adf18-122">The unique name of your deployed app, such as "MyDemoWebApp" in the following examples, or</span></span>
 * <span data-ttu-id="adf18-123">應用程式識別碼、與您已部署的應用程式、服務或物件相關聯的唯一 GUID</span><span class="sxs-lookup"><span data-stu-id="adf18-123">the Application ID, the unique GUID associated with your deployed app, service, or object</span></span>
 
-### <span data-ttu-id="adf18-124">取得應用程式的相關資訊</span><span class="sxs-lookup"><span data-stu-id="adf18-124">Get information about your application</span></span>
-<a id="get-information-about-your-application" class="xliff"></a>
+### <a name="get-information-about-your-application"></a><span data-ttu-id="adf18-124">取得應用程式的相關資訊</span><span class="sxs-lookup"><span data-stu-id="adf18-124">Get information about your application</span></span>
 
 <span data-ttu-id="adf18-125">`Get-AzureRmADApplication` Cmdlet 可用來探索應用程式的相關資訊。</span><span class="sxs-lookup"><span data-stu-id="adf18-125">The `Get-AzureRmADApplication` cmdlet can be used to discover information about your application.</span></span>
 
@@ -66,8 +61,7 @@ AppPermissions          :
 ReplyUrls               : {}
 ```
 
-### <span data-ttu-id="adf18-126">建立應用程式的服務主體</span><span class="sxs-lookup"><span data-stu-id="adf18-126">Create a service principal for your application</span></span>
-<a id="create-a-service-principal-for-your-application" class="xliff"></a>
+### <a name="create-a-service-principal-for-your-application"></a><span data-ttu-id="adf18-126">建立應用程式的服務主體</span><span class="sxs-lookup"><span data-stu-id="adf18-126">Create a service principal for your application</span></span>
 
 <span data-ttu-id="adf18-127">`New-AzureRmADServicePrincipal` Cmdlet 可用來建立服務主體。</span><span class="sxs-lookup"><span data-stu-id="adf18-127">The `New-AzureRmADServicePrincipal` cmdlet is used to create the service principal.</span></span>
 
@@ -83,8 +77,7 @@ DisplayName                    Type                           ObjectId
 MyDemoWebApp                   ServicePrincipal               698138e7-d7b6-4738-a866-b4e3081a69e4
 ```
 
-### <span data-ttu-id="adf18-128">取得服務主體的相關資訊</span><span class="sxs-lookup"><span data-stu-id="adf18-128">Get information about the service principal</span></span>
-<a id="get-information-about-the-service-principal" class="xliff"></a>
+### <a name="get-information-about-the-service-principal"></a><span data-ttu-id="adf18-128">取得服務主體的相關資訊</span><span class="sxs-lookup"><span data-stu-id="adf18-128">Get information about the service principal</span></span>
 
 ```powershell
 $svcprincipal = Get-AzureRmADServicePrincipal -ObjectId 698138e7-d7b6-4738-a866-b4e3081a69e4
@@ -99,8 +92,7 @@ Id                    : 698138e7-d7b6-4738-a866-b4e3081a69e4
 Type                  : ServicePrincipal
 ```
 
-### <span data-ttu-id="adf18-129">使用服務主體來登入</span><span class="sxs-lookup"><span data-stu-id="adf18-129">Sign in using the service principal</span></span>
-<a id="sign-in-using-the-service-principal" class="xliff"></a>
+### <a name="sign-in-using-the-service-principal"></a><span data-ttu-id="adf18-129">使用服務主體來登入</span><span class="sxs-lookup"><span data-stu-id="adf18-129">Sign in using the service principal</span></span>
 
 <span data-ttu-id="adf18-130">您現在可以使用您提供的「應用程式識別碼」和「密碼」，來登入成為應用程式的新服務主體。</span><span class="sxs-lookup"><span data-stu-id="adf18-130">You can now sign in as the new service principal for your app using the *appId* and *password* you provided.</span></span> <span data-ttu-id="adf18-131">您需要提供帳戶的租用戶識別碼。</span><span class="sxs-lookup"><span data-stu-id="adf18-131">You need to supply the Tenant Id for your account.</span></span> <span data-ttu-id="adf18-132">當您使用個人認證來登入 Azure 時，系統會顯示您的租用戶識別碼。</span><span class="sxs-lookup"><span data-stu-id="adf18-132">Your Tenant Id is displayed when you sign into Azure with your personal credentials.</span></span>
 
@@ -122,8 +114,7 @@ CurrentStorageAccount :
 
 <span data-ttu-id="adf18-135">恭喜！</span><span class="sxs-lookup"><span data-stu-id="adf18-135">Congratulations!</span></span> <span data-ttu-id="adf18-136">您可以使用這些認證來執行應用程式了。</span><span class="sxs-lookup"><span data-stu-id="adf18-136">You can use these credentials to run your app.</span></span> <span data-ttu-id="adf18-137">接下來，您需要調整服務主體的權限。</span><span class="sxs-lookup"><span data-stu-id="adf18-137">Next, you need to adjust the permissions of the service principal.</span></span>
 
-## <span data-ttu-id="adf18-138">管理角色</span><span class="sxs-lookup"><span data-stu-id="adf18-138">Managing roles</span></span>
-<a id="managing-roles" class="xliff"></a>
+## <a name="managing-roles"></a><span data-ttu-id="adf18-138">管理角色</span><span class="sxs-lookup"><span data-stu-id="adf18-138">Managing roles</span></span>
 
 > [!NOTE]
 > <span data-ttu-id="adf18-139">Azure 角色型存取控制 (RBAC) 是一種可定義及管理使用者和服務主體角色的模型。</span><span class="sxs-lookup"><span data-stu-id="adf18-139">Azure Role-Based Access Control (RBAC) is a model for defining and managing roles for user and service principals.</span></span> <span data-ttu-id="adf18-140">角色會有一組相關聯的權限，以決定主體可以讀取、存取、寫入或管理的資源。</span><span class="sxs-lookup"><span data-stu-id="adf18-140">Roles have sets of permissions associated with them, which determine the resources a principal can read, access, write, or manage.</span></span> <span data-ttu-id="adf18-141">如需 RBAC 和角色的詳細資訊，請參閱 [RBAC：內建角色](/azure/active-directory/role-based-access-built-in-roles)。</span><span class="sxs-lookup"><span data-stu-id="adf18-141">For more information on RBAC and roles, see [RBAC: Built-in roles](/azure/active-directory/role-based-access-built-in-roles).</span></span>
@@ -182,13 +173,11 @@ ObjectType         : ServicePrincipal
 * [<span data-ttu-id="adf18-155">Remove-AzureRmRoleDefinition</span><span class="sxs-lookup"><span data-stu-id="adf18-155">Remove-AzureRmRoleDefinition</span></span>](/powershell/module/azurerm.resources/Remove-AzureRmRoleDefinition)
 * [<span data-ttu-id="adf18-156">Set-AzureRmRoleDefinition</span><span class="sxs-lookup"><span data-stu-id="adf18-156">Set-AzureRmRoleDefinition</span></span>](/powershell/module/azurerm.resources/Set-AzureRmRoleDefinition)
 
-## <span data-ttu-id="adf18-157">變更安全性主體的認證</span><span class="sxs-lookup"><span data-stu-id="adf18-157">Change the credentials of the security principal</span></span>
-<a id="change-the-credentials-of-the-security-principal" class="xliff"></a>
+## <a name="change-the-credentials-of-the-security-principal"></a><span data-ttu-id="adf18-157">變更安全性主體的認證</span><span class="sxs-lookup"><span data-stu-id="adf18-157">Change the credentials of the security principal</span></span>
 
 <span data-ttu-id="adf18-158">定期檢閱權限並更新密碼是很好的安全性作法。</span><span class="sxs-lookup"><span data-stu-id="adf18-158">It's a good security practice to review the permissions and update the password regularly.</span></span> <span data-ttu-id="adf18-159">您也可能會想要在應用程式變更時，管理及修改安全性認證。</span><span class="sxs-lookup"><span data-stu-id="adf18-159">You may also want to manage and modify the security credentials as your app changes.</span></span> <span data-ttu-id="adf18-160">例如，我們可以藉由建立新密碼並移除舊密碼，來變更服務主體的密碼。</span><span class="sxs-lookup"><span data-stu-id="adf18-160">For example, we can change the password of the service principal by creating a new password and removing the old one.</span></span>
 
-### <span data-ttu-id="adf18-161">為服務主體新增密碼</span><span class="sxs-lookup"><span data-stu-id="adf18-161">Add a new password for the service principal</span></span>
-<a id="add-a-new-password-for-the-service-principal" class="xliff"></a>
+### <a name="add-a-new-password-for-the-service-principal"></a><span data-ttu-id="adf18-161">為服務主體新增密碼</span><span class="sxs-lookup"><span data-stu-id="adf18-161">Add a new password for the service principal</span></span>
 
 ```powershell
 $password = [System.Web.Security.Membership]::GeneratePassword(16,3)
@@ -201,8 +190,7 @@ StartDate           EndDate             KeyId                                Typ
 3/8/2017 5:58:24 PM 3/8/2018 5:58:24 PM 6f801c3e-6fcd-42b9-be8e-320b17ba1d36 Password
 ```
 
-### <span data-ttu-id="adf18-162">取得服務主體的認證清單</span><span class="sxs-lookup"><span data-stu-id="adf18-162">Get a list of credentials for the service principal</span></span>
-<a id="get-a-list-of-credentials-for-the-service-principal" class="xliff"></a>
+### <a name="get-a-list-of-credentials-for-the-service-principal"></a><span data-ttu-id="adf18-162">取得服務主體的認證清單</span><span class="sxs-lookup"><span data-stu-id="adf18-162">Get a list of credentials for the service principal</span></span>
 
 ```powershell
 Get-AzureRmADSpCredential -ServicePrincipalName http://MyDemoWebApp
@@ -215,8 +203,7 @@ StartDate           EndDate             KeyId                                Typ
 5/5/2016 4:55:27 PM 5/5/2017 4:55:27 PM ca9d4846-4972-4c70-b6f5-a4effa60b9bc Password
 ```
 
-### <span data-ttu-id="adf18-163">從服務主體移除舊密碼</span><span class="sxs-lookup"><span data-stu-id="adf18-163">Remove the old password from the service principal</span></span>
-<a id="remove-the-old-password-from-the-service-principal" class="xliff"></a>
+### <a name="remove-the-old-password-from-the-service-principal"></a><span data-ttu-id="adf18-163">從服務主體移除舊密碼</span><span class="sxs-lookup"><span data-stu-id="adf18-163">Remove the old password from the service principal</span></span>
 
 ```powershell
 Remove-AzureRmADSpCredential -ServicePrincipalName http://MyDemoWebApp -KeyId ca9d4846-4972-4c70-b6f5-a4effa60b9bc
@@ -229,8 +216,7 @@ service principal objectId '698138e7-d7b6-4738-a866-b4e3081a69e4'.
 [Y] Yes  [N] No  [S] Suspend  [?] Help (default is "Y"): Y
 ```
 
-### <span data-ttu-id="adf18-164">確認服務主體的認證清單</span><span class="sxs-lookup"><span data-stu-id="adf18-164">Verify the list of credentials for the service principal</span></span>
-<a id="verify-the-list-of-credentials-for-the-service-principal" class="xliff"></a>
+### <a name="verify-the-list-of-credentials-for-the-service-principal"></a><span data-ttu-id="adf18-164">確認服務主體的認證清單</span><span class="sxs-lookup"><span data-stu-id="adf18-164">Verify the list of credentials for the service principal</span></span>
 
 ```powershell
 Get-AzureRmADSpCredential -ServicePrincipalName http://MyDemoWebApp

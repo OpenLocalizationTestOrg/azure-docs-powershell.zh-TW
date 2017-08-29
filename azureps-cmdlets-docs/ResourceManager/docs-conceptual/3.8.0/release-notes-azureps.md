@@ -17,13 +17,11 @@ ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 06/29/2017
 ---
-# <span data-ttu-id="47aff-103">版本資訊</span><span class="sxs-lookup"><span data-stu-id="47aff-103">Release notes</span></span>
-<a id="release-notes" class="xliff"></a>
+# <a name="release-notes"></a><span data-ttu-id="47aff-103">版本資訊</span><span class="sxs-lookup"><span data-stu-id="47aff-103">Release notes</span></span>
 
 <span data-ttu-id="47aff-104">這是此版本中對 Azure PowerShell 所做的變更清單。</span><span class="sxs-lookup"><span data-stu-id="47aff-104">This is a list of changes made to Azure PowerShell in this release.</span></span>
 
-## <span data-ttu-id="47aff-105">3.8.0 版</span><span class="sxs-lookup"><span data-stu-id="47aff-105">Version 3.8.0</span></span>
-<a id="version-380" class="xliff"></a>
+## <a name="version-380"></a><span data-ttu-id="47aff-105">3.8.0 版</span><span class="sxs-lookup"><span data-stu-id="47aff-105">Version 3.8.0</span></span>
 * <span data-ttu-id="47aff-106">計算</span><span class="sxs-lookup"><span data-stu-id="47aff-106">Compute</span></span>
   - <span data-ttu-id="47aff-107">修正 Get-* Cmdlet 中的錯誤，以便擷取多頁的資料 (120 個以上的項目)</span><span class="sxs-lookup"><span data-stu-id="47aff-107">Fix bug in Get-* cmdlets, to allow retrieving multiple pages of data (more than 120 items)</span></span>
 * <span data-ttu-id="47aff-108">DataLakeAnalytics</span><span class="sxs-lookup"><span data-stu-id="47aff-108">DataLakeAnalytics</span></span>
