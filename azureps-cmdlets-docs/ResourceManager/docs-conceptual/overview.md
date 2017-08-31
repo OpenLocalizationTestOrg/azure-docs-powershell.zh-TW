@@ -10,11 +10,11 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.manager: carmonm
 ms.date: 07/26/2017
-ms.openlocfilehash: 3772b68949dc9dba110e6015c8d2a8b944b26528
-ms.sourcegitcommit: 20bcef86db4e4869125bb63085fcffd009c19280
+ms.openlocfilehash: 02bfc15fec83ed4078d9a054b450c5a3cd66b8e2
+ms.sourcegitcommit: db5c50de90764a9bdc7c1f1dbca3aed5bfeb05fa
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 07/27/2017
+ms.lasthandoff: 08/22/2017
 ---
 # <a name="overview-of-azure-powershell"></a>Azure PowerShell 的概觀
 
@@ -29,13 +29,14 @@ Azure PowerShell 提供了一組 Cmdlet，它們會使用 [Azure Resource Manage
 * [Web Apps](/azure/app-service-web/app-service-powershell-samples?toc=/powershell/azure/toc.json)
 * [SQL Databases](/azure/sql-database/sql-database-powershell-samples?toc=/powershell/azure/toc.json)
 
-
 > [!NOTE] > 如果您的部署使用無法轉換的傳統部署模型，您可以安裝 Azure PowerShell 的服務管理版本。 如需詳細資訊，請參閱[安裝 Azure PowerShell 服務管理模組](/powershell/azure/servicemanagement/install-azure-ps)。
-
 
 ### <a name="need-help-with-powershell"></a>需要有關 PowerShell 的協助嗎？
 
-如果您不熟悉 PowerShell，則 PowerShell 的簡介會很有幫助。 若要開始使用 PowerShell，請參閱[使用 PowerShell 編寫指令碼](https://technet.microsoft.com/library/bb978526.aspx)。
+如果您不熟悉 PowerShell，則 PowerShell 的簡介會很有幫助。
+
+* [安裝 PowerShell](/powershell/scripting/installing-windows-powershell)
+* [使用 PowerShell 編寫指令碼](/powershell/scripting/scripting-with-windows-powershell)
 
 您也可以觀賞這段影片︰[PowerShell 基本概念：(第 1 部分) 開始使用 PowerShell](https://channel9.msdn.com/Blogs/Taste-of-Premier/PowerShellBasicsPart1)。
 
