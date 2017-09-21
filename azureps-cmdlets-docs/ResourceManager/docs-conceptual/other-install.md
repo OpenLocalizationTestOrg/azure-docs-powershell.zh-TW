@@ -9,44 +9,18 @@ ms.product: azure
 ms.service: azure-powershell
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 05/15/2017
-ms.openlocfilehash: 9cee582f74b7f3260c6ae167a8ac358d360ad8ab
-ms.sourcegitcommit: 45587b5091293288e16cfae8ac412e0d42f8f450
+ms.date: 09/06/2017
+ms.openlocfilehash: 73c099375cecc8abdd5d6179109513946e7e793b
+ms.sourcegitcommit: 202ec2df66c40a60f47ea06b30a6701ad444d229
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/15/2017
+ms.lasthandoff: 09/08/2017
 ---
 # <a name="other-installation-methods"></a>其他安裝方法
 
-Azure PowerShell 有多種安裝方法。 慣用方法是搭配使用 PowerShellGet 和 PowerShell 資源庫。 您可以使用 Web Platform Installer (WebPI) 來安裝 Azure PowerShell，也可以使用 MSI 檔案 (可從 [GitHub](https://github.com/Azure/azure-powershell/releases/latest) 取得) 來安裝。
+Azure PowerShell 有多種安裝方法。 慣用方法是搭配使用 PowerShellGet 和 PowerShell 資源庫。 您可以使用 Web Platform Installer (WebPI) 將 Azure PowerShell 安裝在 Windows 上，也可以用 GitHub 中的 MSI 檔案安裝。 Azure PowerShell 也可以安裝在 Docker 容器中。
 
-## <a name="docker"></a>Docker
-
-我們會維護使用 Azure PowerShell 預先設定的 Docker 映像。
-
-透過 `docker run` 執行容器。
-
-```powershell
-docker run azuresdk/azure-powershell
-```
-
-此外，我們將一部分的 Cmdlet 作為 PowerShell Core 容器來進行維護 。
-
-若為 Mac/Linux，請使用 `latest` 映像。
-
-```bash
-docker run azuresdk/azure-powershell-core:latest
-```
-
-若為 Windows，則使用 `nanoserver` 映像。
-
-```powershell
-docker run azuresdk/azure-powershell-core:nanoserver
-```
-
-Azure PowerShell 是透過 [PowerShell 資源庫](https://www.powershellgallery.com/)中的 `Install-Module` 安裝在映像上。
-
-## <a name="install-using-the-web-platform-installer"></a>使用 Web Platform Installer 來進行安裝
+## <a name="install-on-windows-using-the-web-platform-installer"></a>使用 Web Platform Installer 安裝在 Windows 上
 
 從 WebPI 來安裝最新版 Azure PowerShell 的方法和安裝舊版的方法一樣。
 請下載 [Azure PowerShell WebPI 套件](http://aka.ms/webpi-azps)並開始安裝。
@@ -88,6 +62,32 @@ At line:1 char:1
 Import-Module "$env:ProgramFiles(x86)\Microsoft SDKs\Azure\PowerShell\AzureRM.psd1"
 ```
 
-## <a name="install-using-the-msi-package"></a>使用 MSI 套件來進行安裝
+## <a name="install-on-windows-using-the-msi-package"></a>使用 MSI 套件安裝在 Windows 上
 
 您可以使用 MSI 檔案 (可從 [GitHub](https://github.com/Azure/azure-powershell/releases/latest) 取得) 來安裝 Azure PowerShell。 如果您已安裝舊版的 Azure 模組，安裝程式會自動移除這些模組。 MSI 套件會在 `$env:ProgramFiles\WindowsPowerShell\Modules` 中安裝模組，但不會建立版本專屬的資料夾。
+
+## <a name="install-in-a-docker-container"></a>安裝在 Docker 容器中
+
+我們會維護使用 Azure PowerShell 預先設定的 Docker 映像。
+
+透過 `docker run` 執行容器。
+
+```powershell
+docker run azuresdk/azure-powershell
+```
+
+此外，我們將一部分的 Cmdlet 作為 PowerShell Core 容器來進行維護 。
+
+若為 Mac/Linux，請使用 `latest` 映像。
+
+```bash
+docker run azuresdk/azure-powershell-core:latest
+```
+
+若為 Windows，則使用 `nanoserver` 映像。
+
+```powershell
+docker run azuresdk/azure-powershell-core:nanoserver
+```
+
+Azure PowerShell 是透過 [PowerShell 資源庫](https://www.powershellgallery.com/)中的 `Install-Module` 安裝在映像上。
