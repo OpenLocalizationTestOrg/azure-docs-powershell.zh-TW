@@ -9,18 +9,18 @@ ms.service: azure-powershell
 ms.devlang: powershell
 ms.topic: conceptual
 ms.manager: carmonm
-ms.date: 07/26/2017
-ms.openlocfilehash: 02bfc15fec83ed4078d9a054b450c5a3cd66b8e2
-ms.sourcegitcommit: db5c50de90764a9bdc7c1f1dbca3aed5bfeb05fa
+ms.date: 08/31/2017
+ms.openlocfilehash: ed681a6e920f698caab978ad57fcee9a76420afd
+ms.sourcegitcommit: e6b7e20bbd04eda51416c56b13f867102b602d1a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 10/07/2017
 ---
 # <a name="overview-of-azure-powershell"></a>Azure PowerShell 的概觀
 
-Azure PowerShell 提供了一組 Cmdlet，它們會使用 [Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview) 模型來管理 Azure 資源。
+Azure PowerShell 提供了一組 Cmdlet，它們會使用 [Azure Resource Manager](/azure/azure-resource-manager/resource-group-overview) 模型來管理 Azure 資源。 您可以在瀏覽器中將它與 [Azure Cloud Shell](/azure/cloud-shell/overview) 搭配使用，或可將它安裝在本機電腦上，並在任何 PowerShell 工作階段中使用它。
 
-檢閱[安裝文章](install-azurerm-ps.md)將 Azure PowerShell 啟動並在您的系統上執行。 接著請閱讀[開始](get-started-azureps.md)文件以開始使用它。 如需最新版本的相關資訊，請參閱[版本資訊](release-notes-azureps.md)。
+使用 [Cloud Shell](/azure/cloud-shell/overview) 在您的瀏覽器中執行 Azure PowerShell，或在您自己的電腦上加以[安裝](install-azurerm-ps.md)。 接著請閱讀[開始](get-started-azureps.md)文件以開始使用它。 如需最新版本的相關資訊，請參閱[版本資訊](release-notes-azureps.md)。
 
 下列範例可協助您了解如何使用 Azure PowerShell 來執行常見案例：
 
@@ -30,6 +30,7 @@ Azure PowerShell 提供了一組 Cmdlet，它們會使用 [Azure Resource Manage
 * [SQL Databases](/azure/sql-database/sql-database-powershell-samples?toc=/powershell/azure/toc.json)
 
 > [!NOTE] > 如果您的部署使用無法轉換的傳統部署模型，您可以安裝 Azure PowerShell 的服務管理版本。 如需詳細資訊，請參閱[安裝 Azure PowerShell 服務管理模組](/powershell/azure/servicemanagement/install-azure-ps)。
+
 
 ### <a name="need-help-with-powershell"></a>需要有關 PowerShell 的協助嗎？
 

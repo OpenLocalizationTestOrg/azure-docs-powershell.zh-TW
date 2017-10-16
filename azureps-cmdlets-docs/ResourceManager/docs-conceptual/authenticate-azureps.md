@@ -10,11 +10,11 @@ ms.service: azure-powershell
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: f6d249ca5bb09c4fe8445ba5b339ffa6012815ed
-ms.sourcegitcommit: 226527be7cb647acfe2ea9ab151185053ab3c6db
+ms.openlocfilehash: 1af5aeffb8e87e916df3e2440a84805935136c0f
+ms.sourcegitcommit: e6b7e20bbd04eda51416c56b13f867102b602d1a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 06/29/2017
+ms.lasthandoff: 10/07/2017
 ---
 # <a name="log-in-with-azure-powershell"></a>使用 Azure PowerShell 來登入
 
@@ -52,6 +52,12 @@ Azure PowerShell 支援多種登入方法。 最簡單的入門方法是在命�
     SubscriptionName      : My Production Subscription
     CurrentStorageAccount :
     ```
+
+### <a name="log-in-using-an-azure-vm-managed-service-identity"></a>使用 Azure VM 受管理的服務識別登入
+
+受管理的服務識別 (MSI) 是 Azure Active Directory 的預覽功能。 您可以使用 MSI 服務主體進行登入，並取得僅限應用程式的存取權杖來存取其他資源。
+
+如需 MSI 的詳細資訊，請參閱[如何使用 Azure VM 受管理的服務識別登入 (MSI) 進行登入和取得權杖](/azure/active-directory/msi-how-to-get-access-token-using-msi)。
 
 ## <a name="log-in-to-another-cloud"></a>登入其他雲端
 
