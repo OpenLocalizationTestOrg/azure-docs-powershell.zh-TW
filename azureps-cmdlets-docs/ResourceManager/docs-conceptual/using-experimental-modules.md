@@ -10,11 +10,11 @@ ms.service: azure-powershell
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 09/05/2017
-ms.openlocfilehash: 4a8a74977440fa89b89843bbc95e43d622a58474
-ms.sourcegitcommit: e6b7e20bbd04eda51416c56b13f867102b602d1a
+ms.openlocfilehash: 7a01957040be7c0498ef4f0e9b8f7297119221a5
+ms.sourcegitcommit: 9d2d35944106bdb6758853b050089bc804e6b9d2
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="using-experimental-azure-powershell-modules"></a>使用實驗性 Azure PowerShell 模組
 
@@ -35,7 +35,20 @@ Azure PowerShell 小組著重於 Azure 中的開發人員工具 (特別是 CLI)�
 
 ## <a name="how-to-install-an-experimental-module"></a>如何安裝實驗性模組
 
-系統會將實驗性模組發佈至 PowerShell 資源庫，就如同現有的 Azure PowerShell 模組。 若要安裝實驗性模組，請使用下列提升權限 PowerShell 工作階段中的命令：
+系統會將實驗性模組發佈至 PowerShell 資源庫，就如同現有的 Azure PowerShell 模組。 若要查看實驗模組清單，請執行下列命令：
+
+```powershell
+Find-Module AzureRM.*.Experiments
+```
+
+```Output
+Version    Name                                Repository           Description
+-------    ----                                ----------           -----------
+1.0.0      AzureRM.Websites.Experiments        PSGallery            Create and deploy web applications using Azure Ap...
+1.0.25     AzureRM.Compute.Experiments         PSGallery            Azure Compute experiments for VM creation
+```
+
+若要安裝實驗性模組，請使用下列提升權限 PowerShell 工作階段中的命令：
 
 ```powershell
 Install-Module AzureRM.Compute.Experiments
@@ -108,4 +121,10 @@ Receive-Job $job
 
 ```powershell
 Send-Feedback
+```
+
+### <a name="uninstall-the-experimental-modules"></a>解除安裝實驗性模組
+
+```powershell
+Uninstall-Module AzureRM.Compute.Experiments
 ```
