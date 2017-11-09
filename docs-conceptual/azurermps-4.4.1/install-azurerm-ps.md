@@ -9,14 +9,17 @@ ms.product: azure
 ms.service: azure-powershell
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 05/17/2017
-ms.openlocfilehash: 0c1500a8748a3aa4546c6ce1e8d16a635b056edb
+ms.date: 08/31/2017
+ms.openlocfilehash: 0e560332c87fdcc8b7365f2271de24481003a4d6
 ms.sourcegitcommit: b256bf48e15ee98865de0fae50e7b81878b03a54
 ms.translationtype: HT
 ms.contentlocale: zh-TW
 ms.lasthandoff: 11/03/2017
 ---
 # <a name="install-and-configure-azure-powershell"></a>安裝並設定 Azure PowerShell
+
+本文說明在 Windows 環境中安裝 Azure PowerShell 模組的步驟。
+如果您想要在 macOS 或 Linux 上使用 Azure PowerShell，請參閱下列文章：[在 macOS 與 Linux 上安裝和設定 Azure PowerShell](install-azurermps-maclinux.md)。
 
 從 PowerShell 資源庫安裝 Azure PowerShell 是慣用的安裝方法。
 
@@ -30,7 +33,7 @@ Get-Module PowerShellGet -list | Select-Object Name,Version,Path
 
 您應該會看到類似下面的輸出：
 
-```
+```Output
 Name          Version Path
 ----          ------- ----
 PowerShellGet 1.0.0.1 C:\Program Files\WindowsPowerShell\Modules\PowerShellGet\1.0.0.1\PowerShellGet.psd1
@@ -39,7 +42,7 @@ PowerShellGet 1.0.0.1 C:\Program Files\WindowsPowerShell\Modules\PowerShellGet\1
 如果您未安裝 PowerShellGet，請參閱本文的[如何取得 PowerShellGet](#how-to-get-powershellget)一節。
 
 > [!NOTE]
-> 若要使用 PowerShellGet，需要有可讓您執行指令碼的執行原則。 如需 PowerShell 的執行原則詳細資訊，請參閱[關於執行原則](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.core/about/about_execution_policies)。
+> 若要使用 PowerShellGet，需要有可讓您執行指令碼的執行原則。 如需 PowerShell 的執行原則詳細資訊，請參閱[關於執行原則](/powershell/module/microsoft.powershell.core/about/about_execution_policies)。
 
 ## <a name="step-2-install-azure-powershell"></a>步驟 2：安裝 Azure PowerShell
 
@@ -47,12 +50,12 @@ PowerShellGet 1.0.0.1 C:\Program Files\WindowsPowerShell\Modules\PowerShellGet\1
 
 ```powershell
 # Install the Azure Resource Manager modules from the PowerShell Gallery
-Install-Module AzureRM
+Install-Module AzureRM -AllowClobber
 ```
 
 根據預設，PowerShell 資源庫未設為 PowerShellGet 的信任存放庫。 第一次使用 PSGallery 時，您會看到下列提示：
 
-```
+```Output
 Untrusted repository
 
 You are installing the modules from an untrusted repository. If you trust this repository, change
@@ -84,6 +87,10 @@ Import-Module AzureRM
 
 * [開始使用 Azure PowerShell](get-started-azureps.md)
 
+## <a name="reporting-issues-and-feedback"></a>報告問題和意見反應
+
+如果您遇到任何與工具有關的錯誤，請在 GitHub 存放庫的[問題](https://github.com/Azure/azure-powershell/issues)一節中提出問題。 若要從命令列提供意見反應，請使用 `Send-Feedback` Cmdlet。
+
 ## <a name="frequently-asked-questions"></a>常見問題集
 
 ### <a name="how-to-get-powershellget"></a>如何取得 PowerShellGet
@@ -97,7 +104,7 @@ Import-Module AzureRM
 <a id="helpmechoose"></a>
 ### <a name="checking-the-version-of-azure-powershell"></a>檢查 Azure PowerShell 的版本
 
-雖然我們鼓勵您儘早升級至最新版本，但支援的 Azure PowerShell 版本有好幾個。 若要判斷已安裝的 Azure PowerShell 版本，請從命令列執行 `Get-Module AzureRM`。
+雖然我們鼓勵您儘早升級至最新版本，但仍針對數個 Azure PowerShell 版本提供支援。 若要判斷已安裝的 Azure PowerShell 版本，請從命令列執行 `Get-Module AzureRM`。
 
 ```powershell
 Get-Module AzureRM -list | Select-Object Name,Version,Path
@@ -111,7 +118,7 @@ Get-Module AzureRM -list | Select-Object Name,Version,Path
 
 若有安裝包括服務管理模組的舊版 Azure PowerShell，則可能會出現下列錯誤：
 
-```
+```Output
 PackageManagement\Install-Package : A command with name 'Get-AzureStorageContainerAcl' is already
 available on this system. This module 'Azure.Storage' may override the existing commands. If you
 still want to install this module 'Azure.Storage', use -AllowClobber parameter.
