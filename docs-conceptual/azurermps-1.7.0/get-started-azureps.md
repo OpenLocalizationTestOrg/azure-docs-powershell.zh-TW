@@ -10,11 +10,11 @@ ms.service: azure-powershell
 ms.devlang: powershell
 ms.topic: get-started-article
 ms.date: 08/31/2017
-ms.openlocfilehash: 2cd3fc8e955ae826471dceee79d5e6b70070d416
-ms.sourcegitcommit: b256bf48e15ee98865de0fae50e7b81878b03a54
+ms.openlocfilehash: 87aa26f86d1e6ebcae729375757fc3edc1abb71c
+ms.sourcegitcommit: 79dd3700b5cb4cb90b268778b482082052160093
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/03/2017
+ms.lasthandoff: 11/14/2017
 ---
 # <a name="getting-started-with-azure-powershell"></a>開始使用 Azure PowerShell
 
@@ -26,15 +26,15 @@ Azure PowerShell 的設計是為了讓您從命令列管理 Azure 資源，以�
 
 1. 從 Azure 入口網站的頂端導覽啟動 Cloud Shell。
 
-   ![Shell 圖示](~/media/get-started-azureps/shell-icon.png)
+   ![Shell 圖示](/media/get-started-azureps/shell-icon.png)
 
 2. 選擇您想使用的訂用帳戶，並建立儲存體帳戶。
 
-   ![建立儲存體帳戶](~/media/get-started-azureps/storage-prompt.png)
+   ![建立儲存體帳戶](/media/get-started-azureps/storage-prompt.png)
 
 一旦您建立儲存體之後，Cloud Shell 會在瀏覽器中開啟 PowerShell 工作階段。
 
-![適用於 PowerShell 的 Cloud Shell](~/media/get-started-azureps/cloud-powershell.png)
+![適用於 PowerShell 的 Cloud Shell](/media/get-started-azureps/cloud-powershell.png)
 
 您也可以安裝 Azure PowerShell，並在本機 PowerShell 工作階段中使用。
 
