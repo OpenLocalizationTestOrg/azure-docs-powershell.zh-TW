@@ -1,4 +1,4 @@
--- 標題：開始使用 Azure PowerShell | Microsoft Docs 說明: 服務: azure 建立者: sdwheeler ms.author: sewhee 管理員: carmonm ms.product: azure ms.service: azure-powershell ms.devlang: powershell ms.topic: get-started-article ms.date: 08/31/2017
+-- 標題：開始使用 Azure PowerShell | Microsoft Docs 說明: 服務: azure 建立者: sdwheeler ms.author: sewhee 管理員: carmonm ms.product: azure ms.service: azure-powershell ms.devlang: powershell ms.topic: get-started-article ms.date: 11/15/2017
 ---
 # <a name="getting-started-with-azure-powershell"></a>開始使用 Azure PowerShell
 
@@ -28,7 +28,7 @@ Azure PowerShell 的設計是為了讓您從命令列管理 Azure 資源，以�
 
 1. [安裝 Azure PowerShell](install-azurerm-ps.md)。
 
-2. 若要確認安裝是否成功，請從命令列執行 `Get-Module AzureRM`。
+2. 若要確認安裝是否成功，請從命令列執行 `Get-Module AzureRM -ListAvailable`。
 
 ## <a name="log-in-to-azure"></a>登入 Azure
 
