@@ -9,12 +9,12 @@ ms.product: azure
 ms.service: azure-powershell
 ms.devlang: powershell
 ms.topic: get-started-article
-ms.date: 11/15/2017
-ms.openlocfilehash: fbd5309167be8cb32aecbfb4661a1789c37d8f2d
-ms.sourcegitcommit: 7a1c08518b180de822c915db99b055b93a1459d7
+ms.date: 08/31/2017
+ms.openlocfilehash: 2cd3fc8e955ae826471dceee79d5e6b70070d416
+ms.sourcegitcommit: e6b7e20bbd04eda51416c56b13f867102b602d1a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 11/17/2017
+ms.lasthandoff: 10/07/2017
 ---
 # <a name="getting-started-with-azure-powershell"></a>開始使用 Azure PowerShell
 
@@ -26,15 +26,15 @@ Azure PowerShell 的設計是為了讓您從命令列管理 Azure 資源，以�
 
 1. 從 Azure 入口網站的頂端導覽啟動 Cloud Shell。
 
-   ![Shell 圖示](/media/get-started-azureps/shell-icon.png)
+   ![Shell 圖示](~/media/get-started-azureps/shell-icon.png)
 
 2. 選擇您想使用的訂用帳戶，並建立儲存體帳戶。
 
-   ![建立儲存體帳戶](/media/get-started-azureps/storage-prompt.png)
+   ![建立儲存體帳戶](~/media/get-started-azureps/storage-prompt.png)
 
 一旦您建立儲存體之後，Cloud Shell 會在瀏覽器中開啟 PowerShell 工作階段。
 
-![適用於 PowerShell 的 Cloud Shell](/media/get-started-azureps/cloud-powershell.png)
+![適用於 PowerShell 的 Cloud Shell](~/media/get-started-azureps/cloud-powershell.png)
 
 您也可以安裝 Azure PowerShell，並在本機 PowerShell 工作階段中使用。
 
@@ -44,7 +44,7 @@ Azure PowerShell 的設計是為了讓您從命令列管理 Azure 資源，以�
 
 1. [安裝 Azure PowerShell](install-azurerm-ps.md)。
 
-2. 若要確認安裝是否成功，請從命令列執行 `Get-Module AzureRM -ListAvailable`。
+2. 若要確認安裝是否成功，請從命令列執行 `Get-Module AzureRM`。
 
 ## <a name="log-in-to-azure"></a>登入 Azure
 
