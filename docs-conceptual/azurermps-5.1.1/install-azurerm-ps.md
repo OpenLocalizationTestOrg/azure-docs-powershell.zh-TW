@@ -10,11 +10,11 @@ ms.service: azure-powershell
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 08/31/2017
-ms.openlocfilehash: 0e560332c87fdcc8b7365f2271de24481003a4d6
-ms.sourcegitcommit: c42c7176276ec4e1cc3360a93e6b15d32083bf9f
+ms.openlocfilehash: 7b7177609ef9104525f173f468d44610b4ad1fe9
+ms.sourcegitcommit: db7f0ad39036bf60985ab7bf991b2d41fb34019f
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 12/27/2017
 ---
 # <a name="install-and-configure-azure-powershell"></a>安裝並設定 Azure PowerShell
 
@@ -114,7 +114,8 @@ Get-Module AzureRM -list | Select-Object Name,Version,Path
 
 如果您有使用傳統部署模型的部署，則可以安裝 Azure PowerShell 的服務管理版本。 如需詳細資訊，請參閱[安裝 Azure PowerShell 服務管理模組](/powershell/azure/servicemanagement/install-azure-ps)。 Azure 和 AzureRM 模組會共用通用相依性。 若您同時使用 Azure 與 AzureRM 模組，則應該安裝每個套件的相同版本。
 
-### <a id="update-azps"></a>更新為新版的 Azure PowerShell
+<a id="update-azps"></a>
+### <a name="updating-to-a-new-version-of-azure-powershell"></a>更新為新版的 Azure PowerShell
 
 若有安裝包括服務管理模組的舊版 Azure PowerShell，則可能會出現下列錯誤：
 
