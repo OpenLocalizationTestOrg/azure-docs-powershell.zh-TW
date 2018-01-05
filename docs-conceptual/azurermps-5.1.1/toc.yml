@@ -37,6 +37,8 @@
       items:
         - name: 使用實驗性模組
           href: using-experimental-modules.md
+        - name: 使用 PowerShell 作業平行執行 Cmdlet
+          href: using-psjobs.md
     - name: 版本資訊
       href: release-notes-azureps.md
 - name: 指令碼範例
