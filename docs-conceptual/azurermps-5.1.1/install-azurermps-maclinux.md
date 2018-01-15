@@ -10,11 +10,11 @@ ms.service: azure-powershell
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 09/06/2017
-ms.openlocfilehash: 94b39c18acaca7a4b17b5207feed025442665acc
-ms.sourcegitcommit: c42c7176276ec4e1cc3360a93e6b15d32083bf9f
+ms.openlocfilehash: 2357bb5d71c221a782a297c41e7a6d08cd3f2952
+ms.sourcegitcommit: 4ebdeea3c472d94c1aedb10b9d85bf2e76826e83
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/06/2018
 ---
 # <a name="install-and-configure-azure-powershell-on-macos-and-linux"></a>在 macOS 與 Linux 上安裝和設定 Azure PowerShell
 
@@ -55,6 +55,7 @@ Install-Module AzureRM.NetCore
 
 ```powershell
 Import-Module AzureRM.Netcore
+Import-Module AzureRM.Profile.Netcore
 ```
 
 匯入完成後，您可以嘗試使用下列命令登入 Azure，來測試新安裝的模組：
@@ -72,7 +73,7 @@ Azure PowerShell modules for .NET Standard 模組仍在開發中。 這些模組
 * 帳戶管理
   - 透過 Microsoft Azure Active Directory，以 Microsoft 帳戶、組織帳戶或服務主體登入
   - 透過 Save-AzureRmContext 將認證儲存到磁碟上，及使用 Import-AzureRmContext 載入儲存的認證
-* Environment
+* 環境
   - 取得其他現成可用的 Microsoft Azure 環境
   - 新增/設定/移除自訂環境 (例如 Azure Stack 或 Windows Azure 套件環境)
 * 使用資源管理員與服務管理介面之 Azure 服務適用的管理平面 Cmdlet。
