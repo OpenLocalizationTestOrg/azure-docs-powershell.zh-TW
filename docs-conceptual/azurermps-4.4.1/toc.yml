@@ -39,6 +39,9 @@
           href: using-experimental-modules.md
     - name: 版本資訊
       href: release-notes-azureps.md
+      items:
+        - name: Azure PowerShell 4.x 的重大變更
+          href: migration-guide.4.0.0.md
 - name: 指令碼範例
   items:
     - name: Linux 虛擬機器

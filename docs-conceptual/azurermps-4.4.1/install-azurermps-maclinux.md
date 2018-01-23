@@ -9,41 +9,39 @@ ms.product: azure
 ms.service: azure-powershell
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 09/06/2017
-ms.openlocfilehash: 94b39c18acaca7a4b17b5207feed025442665acc
-ms.sourcegitcommit: c42c7176276ec4e1cc3360a93e6b15d32083bf9f
+ms.date: 01/12/2018
+ms.openlocfilehash: 64a86dfd4af7f3f0a91501e9a096ff190f7100cb
+ms.sourcegitcommit: d320fd5a2f468445c9e5aaa8d28dc363ece12ffc
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 01/16/2018
 ---
 # <a name="install-and-configure-azure-powershell-on-macos-and-linux"></a>在 macOS 與 Linux 上安裝和設定 Azure PowerShell
 
-現在可以將 PowerShell 6 搶鮮版 (Beta) 與 Azure PowerShell 安裝在非 Windows 平台上。
-將 Azure PowerShell 安裝在 macOS 與 Linux 的程序與安裝在 Windows 上沒有不同，但您必須先安裝 PowerShell 6 搶鮮版 (Beta)。
+現在可以將 PowerShell Core v6 與 Azure PowerShell 安裝在非 Windows 平台上。
+將 Azure PowerShell 安裝在 macOS 與 Linux 的程序與安裝在 Windows 上沒有不同，但您必須先安裝 PowerShell Core v6。
 
 > [!NOTE]
 
-> PowerShell 6 搶鮮版 (Beta) 與 Azure PowerShell for .NET Core 目前仍處於 Beta 階段。
+> PowerShell Core v6 與 Azure PowerShell for .NET Core 目前仍處於 Beta 階段。
 > 這些產品只提供有限支援。 若有問題或發現錯誤，請在 GitHub 中提出。
 >
-> * [關於 PowerShell 6 搶鮮版 (Beta) 的問題](https://github.com/PowerShell/PowerShell/issues)
+> * [關於 PowerShell Core v6 的問題](https://github.com/PowerShell/PowerShell/issues)
 > * [關於Azure PowerShell 的問題](https://github.com/azure/azure-docs-powershell/issues)
 
-## <a name="step-1-install-powershell-6-beta"></a>步驟 1：安裝 PowerShell 6 搶鮮版 (Beta)
+## <a name="step-1-install-powershell-core-v6"></a>步驟 1：安裝 PowerShell Core v6
 
-PowerShell 6 搶鮮版 (Beta) 安裝程序因目標作業系統而異。
-雖然 PowerShell 6 搶鮮版 (Beta) 可以安裝在 Windows 上，但本文只說明在 macOS 與 Linux 上安裝的步驟。 如果您想要在 Windows 中使用 Azure PowerShell，請參閱 Windows 適用的[安裝](./install-azurerm-ps.md)文章。
+PowerShell Core v6 安裝程序因目標作業系統而異。
+雖然 PowerShell Core v6 可以安裝在 Windows 上，但本文只說明在 macOS 與 Linux 上安裝的步驟。 如果您想要在 Windows 中使用 Azure PowerShell，請參閱 Windows 適用的[安裝](./install-azurerm-ps.md)文章。
 
-若要在 Linux 或 macOS 上安裝 **PowerShell 6** 搶鮮版 (Beta)，您必須：
+Linux 或 macOS 上的 **PowerShell Core v6** 安裝作業會因為 Linux 發行版本和作業系統版本不同而有所差異。
+您可以在下列文章中找到詳細的指示：
 
-1. 從 [GitHub](https://github.com/powershell/powershell#get-powershell) 取得特定 OS 與作業系統版本適用的 PowerShell
-2. 依照安裝指示進行
-   - [Linux](https://github.com/PowerShell/PowerShell/blob/master/docs/installation/linux.md)
-   - [macOS](https://github.com/PowerShell/PowerShell/blob/master/docs/installation/linux.md#macos-1012)
+- [在 macOS 和 Linux 上安裝 PowerShell Core](/powershell/scripting/setup/installing-powershell-core-on-macos-and-linux)
 
 ## <a name="step-2-install-azure-powershell-for-net-core"></a>步驟 2：安裝 Azure PowerShell for .NET Core
 
-PowerShell 6 搶鮮版 (Beta) 隨附於已安裝的 PowerShellGet 模組。 這可讓您輕鬆地安裝任何已發佈到 PowerShell 資源庫的模組。 若要安裝 Azure PowerShell，請開啟新的 PowerShell 工作階段，並執行下列命令：
+PowerShell Core v6 隨附於已安裝的 PowerShellGet 模組。 這可讓您輕鬆地安裝任何已發佈到 PowerShell 資源庫的模組。 若要安裝 Azure PowerShell，請開啟新的 PowerShell 工作階段，並執行下列命令：
 
 ```powershell
 Install-Module AzureRM.NetCore
@@ -55,6 +53,7 @@ Install-Module AzureRM.NetCore
 
 ```powershell
 Import-Module AzureRM.Netcore
+Import-Module AzureRM.Profile.Netcore
 ```
 
 匯入完成後，您可以嘗試使用下列命令登入 Azure，來測試新安裝的模組：
@@ -72,7 +71,7 @@ Azure PowerShell modules for .NET Standard 模組仍在開發中。 這些模組
 * 帳戶管理
   - 透過 Microsoft Azure Active Directory，以 Microsoft 帳戶、組織帳戶或服務主體登入
   - 透過 Save-AzureRmContext 將認證儲存到磁碟上，及使用 Import-AzureRmContext 載入儲存的認證
-* Environment
+* 環境
   - 取得其他現成可用的 Microsoft Azure 環境
   - 新增/設定/移除自訂環境 (例如 Azure Stack 或 Windows Azure 套件環境)
 * 使用資源管理員與服務管理介面之 Azure 服務適用的管理平面 Cmdlet。
