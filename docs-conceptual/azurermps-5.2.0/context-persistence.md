@@ -11,10 +11,10 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 08/31/2017
 ms.openlocfilehash: 8ef20796b64b16c78a653e293a57d5e752d89710
-ms.sourcegitcommit: c42c7176276ec4e1cc3360a93e6b15d32083bf9f
+ms.sourcegitcommit: 72f56597f0329d35779a3ea4ccea6293f0fd2502
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 12/14/2017
+ms.lasthandoff: 02/01/2018
 ---
 # <a name="persisting-user-logins-across-powershell-sessions"></a>在 PowerShell 工作階段之間保存使用者登入
 
@@ -83,7 +83,7 @@ PS C:\> Set-AzureRMContext -Subscription "Contoso Subscription 1" -Name "Contoso
 
 上一個範例會使用目前的認證來新增目標為 'Contoso Subscription 1' 的新內容。 新的內容名為 'Contoso1'。 如果您未提供內容的名稱，就會使用使用帳戶識別碼和訂用帳戶識別碼的預設名稱。
 
-若要將現有的內容重新命名，請使用 `Rename-AzureRmContext` Cmdlet。 例如：
+若要將現有的內容重新命名，請使用 `Rename-AzureRmContext` Cmdlet。 例如︰
 
 ```powershell
 PS C:\> Rename-AzureRmContext '[user1@contoso.org; 123456-7890-1234-564321]` 'Contoso2'
@@ -91,7 +91,7 @@ PS C:\> Rename-AzureRmContext '[user1@contoso.org; 123456-7890-1234-564321]` 'Co
 
 這個範例會將包含自動名稱 `[user1@contoso.org; 123456-7890-1234-564321]` 的內容重新命名為簡單名稱 'Contoso2'。 管理內容的 Cmdlet 也會使用索引標籤完成，讓您能快速選取內容。
 
-最後，若要移除內容，請使用 `Remove-AzureRmContext` Cmdlet。  例如：
+最後，若要移除內容，請使用 `Remove-AzureRmContext` Cmdlet。  例如︰
 
 ```powershell
 PS C:\> Remove-AzureRmContext Contoso2
