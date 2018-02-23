@@ -37,6 +37,8 @@
       items:
         - name: 使用實驗性模組
           href: using-experimental-modules.md
+        - name: PowerShell 工作
+          href: using-psjobs.md
     - name: 版本資訊
       href: release-notes-azureps.md
       items:
