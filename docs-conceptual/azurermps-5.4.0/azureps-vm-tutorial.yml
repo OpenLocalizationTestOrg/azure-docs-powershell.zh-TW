@@ -1,0 +1,47 @@
+### YamlMime:Tutorial
+title: "使用 Azure PowerShell 建立虛擬機器"
+metadata:
+  title: "使用 Azure PowerShell 建立虛擬機器"
+  description: "建立虛擬機器以開始使用 Azure PowerShell。"
+  audience: Developer
+  level: Beginner
+  displayType: two-column
+  interactive: azurepowershell
+  ms.date: 02/08/2018
+  ms.author: sewhee
+  author: sdwheeler
+  manager: carmonm
+  ms.devlang: azure-powershell
+  ms.technology: azure
+  ms.openlocfilehash: bb5024927da7888dca406a522fa39dfe225afb89
+  ms.sourcegitcommit: 3842efd1eb2d16f7c6d9ae87d6d7916b770658c1
+  ms.translationtype: HT
+  ms.contentlocale: zh-TW
+  ms.lasthandoff: 03/05/2018
+items:
+- durationInMinutes: 1
+  content: "在本教學課程中，您將了解使用 Azure PowerShell 設定虛擬機器所需的所有步驟。 本教學課程也涵蓋輸出查詢、Azure 資源重複使用和資源清除。\n\n您可以透過 Azure Cloud Shell 提供的互動式體驗完成本教學課程，也可以在本機[安裝 Azure PowerShell](install-azurerm-ps.md)。\n\n使用 __ctrl-shift-v__ (__在 macOS 上使用 cmd shift hyper-v__) 將教學課程的文字貼到 Azure Cloud Shell。"
+- durationInMinutes: 1
+  title: "登入"
+  content: "如果您使用 Azure PowerShell 的本機安裝，您需要先登入，再執行任何其他步驟。\n\n```powershell\nLogin-AzureRmAccount\n```\n\n請遵循您終端機上顯示的步驟，來完成登入程序。"
+- durationInMinutes: 1
+  title: "建立資源群組"
+  content: "在 Azure 中，所有資源都會配置在管理群組中。 資源群組會提供資源的邏輯群組，以集合的方式讓資源更容易使用。\n在本教學課程中，所有建立的資源都會移入名為 `TutorialResources` 的單一群組。\n\n```powershell\nNew-AzureRmResourceGroup -Name TutorialResources -Location eastus\n```\n\n```Output\nResourceGroupName : TutorialResources\nLocation          : eastus\nProvisioningState : Succeeded\nTags              :\nResourceId        : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/TutorialResources\n```"
+- durationInMinutes: 1
+  title: "建立 VM 的管理員認證"
+  content: "建立新的虛擬機器之前，您必須先建立認證物件，且此認證物件需包含 Windows VM 系統管理員帳戶的使用者名稱和密碼。\n\n```powershell\n$cred = Get-Credential -Message \"Enter a username and password for the virtual machine.\"\n```\n\n出現提示時，輸入使用者名稱和密碼。 產生的認證物件在下一個步驟中會作為傳遞的參數。\n\n```Output\nWindows PowerShell credential request.\nEnter a username and password for the virtual machine.\nUser: tutorAdmin\nPassword for user tutorAdmin: *********\n```"
+- durationInMinutes: 4
+  title: "建立虛擬機器"
+  content: "Azure 中的虛擬機器有大量的相依性。 Azure PowerShell 會根據您指定的命令列引數，為您建立這些資源。 為了增加可讀性，我們使用 [PowerShell 展開](/powershell/module/microsoft.powershell.core/about/about_splatting)將參數傳遞給 Azure Cmdlet。\n\n建立執行 Windows 的新虛擬機器。\n\n```powershell\n$vmParams = @{\n  ResourceGroupName = 'TutorialResources'\n  Name = 'TutorialVM1'\n  Location = 'eastus'\n  ImageName = 'Win2016Datacenter'\n  PublicIpAddressName = 'tutorialPublicIp'\n  Credential = $cred\n  OpenPorts = 3389\n}\n$newVM1 = New-AzureRmVM @vmParams\n```\n建立虛擬機器後，您會看到系統使用了參數值，並已建立 Azure 資源。\nPowerShell 會顯示進度列，如下所示。\n\n```Output\n Creating Azure resources\n  39% \\\n  [ooooooooooooooooooooooooooooooooooo                                                                 ]\n\n  Creating TutorialVM1 virtual machine.\n```\n\nVM 準備就緒之後，我們就可以在 Azure 入口網站中檢視結果，或檢查 \\$newVM1 變數查看結果。\n\n```powershell\n$newVM1\n```\n\n```Output\nResourceGroupName : TutorialResources\nId                : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/TutorialResources/providers/Microsoft.Compute/virtualMachines/TutorialVM1\nVmId              : 12345678-9abc-def0-1234-56789abcedf0\nName              : TutorialVM1\nType              : Microsoft.Compute/virtualMachines\nLocation          : eastus\nTags              : {}\nHardwareProfile   : {VmSize}\nNetworkProfile    : {NetworkInterfaces}\nOSProfile         : {ComputerName, AdminUsername, WindowsConfiguration, Secrets}\nProvisioningState : Succeeded\nStorageProfile    : {ImageReference, OsDisk, DataDisks}\n```\n\n列在大括號內的屬性值是巢狀的物件。 在下一個步驟中，我們將示範如何檢視這些巢狀物件中的特定值。"
+- durationInMinutes: 5
+  title: "使用查詢取得 VM 資訊"
+  content: "從我們剛才建立的 VM 取得更詳細的資訊。 在此範例中，我們會確認 VM 的名稱以及所建立的系統管理員帳戶。\n\n```powershell\n$newVM1.OSProfile | Select-Object ComputerName,AdminUserName\n```\n\n```Output\nComputerName AdminUsername\n------------ -------------\nTutorialVM1  tutorialAdmin\n```\n\n我們可以使用其他 Azure PowerShell 命令來取得有關網路設定的特定資訊。\n\n```powershell\n$newVM1 | Get-AzureRmNetworkInterface |\n  Select-Object -ExpandProperty IpConfigurations |\n    Select-Object Name,PrivateIpAddress\n```\n\n在此範例中，我們使用 PowerShell 管線將 \\$newVM1 物件傳送給 `Get-AzureRmNetworkInterface` Cmdlet。 從產生的網路介面物件中，選取巢狀的 IpConfigurations 物件。 從 IpConfigurations 物件，選取 Name 和 PrivateIpAddress 屬性。\n\n```Output\nName        PrivateIpAddress\n----        ----------------\nTutorialVM1 192.168.1.4\n```\n\n為了確認 VM 正在執行，需要透過遠端桌面連線。 為此，我們需要公用 IP 位址。\n\n```powershell\n$publicIp = Get-AzureRmPublicIpAddress -Name tutorialPublicIp -ResourceGroupName TutorialResources\n\n$publicIp | Select-Object Name,IpAddress,@{label='FQDN';expression={$_.DnsSettings.Fqdn}}\n```\n\n在此範例中，我們使用 `Get-AzureRmPublicIpAddress`，並將結果儲存在 \\$publicIp 變數。 在這個變數中選取屬性，並使用運算式來擷取巢狀的 Fqdn 屬性。\n\n```Output\nName             IpAddress           FQDN\n----             ---------           ----\ntutorialPublicIp <PUBLIC_IP_ADDRESS> tutorialvm1-8a0999.eastus.cloudapp.azure.com\n```\n\n您可以在您的本機電腦執行下列命令，以透過遠端桌面連線到 VM。\n\n```powershell\nmstsc.exe /v <PUBLIC_IP_ADDRESS>\n```\n\n如需有關查詢物件屬性的詳細資訊，請參閱[查詢 Azure 資源](./queries-azureps.md)。"
+- durationInMinutes: 4
+  title: "在現有子網路上建立新的 VM"
+  content: "第二個 VM 會使用現有子網路。\n\n```powershell\n$vm2Params = @{\n  ResourceGroupName = 'TutorialResources'\n  Name = 'TutorialVM2'\n  ImageName = 'Win2016Datacenter'\n  VirtualNetworkName = 'TutorialVM1'\n  SubnetName = 'TutorialVM1'\n  PublicIpAddressName = 'tutorialPublicIp2'\n  Credential = $cred\n  OpenPorts = 3389\n}\n$newVM2 = New-AzureRmVM @vm2Params\n\n$newVM2\n```\n\n```Output\nResourceGroupName        : TutorialResources\nId                       : /subscriptions/XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX/resourceGroups/TutorialResources/providers/Microsoft.Compute/virtualMachines/TutorialVM2\nVmId                     : 12345678-9abc-def0-1234-56789abcedf1\nName                     : TutorialVM2\nType                     : Microsoft.Compute/virtualMachines\nLocation                 : eastus\nTags                     : {}\nHardwareProfile          : {VmSize}\nNetworkProfile           : {NetworkInterfaces}\nOSProfile                : {ComputerName, AdminUsername, WindowsConfiguration, Secrets}\nProvisioningState        : Succeeded\nStorageProfile           : {ImageReference, OsDisk, DataDisks}\nFullyQualifiedDomainName : tutorialvm2-dfa5af.eastus.cloudapp.azure.com\n```\n\n由於 \\$newVM2 物件的 FullyQualifiedDomainName 屬性已傳回新的公用 IP 位址，您可以省略一些步驟以取得這項資訊。 使用下列命令利用遠端桌面建立連線。\n\n```powershell\nmstsc.exe /v $newVM2.FullyQualifiedDomainName\n```"
+- durationInMinutes: 4
+  title: "清除"
+  content: "現在已完成本教學課程，可以開始清除已建立的資源。 您可以使用 `Remove-AzureRmResource` 命令刪除個別的資源，但使用 `Remove-AzureRmResourceGroup` 命令刪除群組是移除資源群組中所有資源最安全的方法。\n\n```powershell\n$job = Remove-AzureRmResourceGroup -Name TutorialResources -Force -AsJob\n\n$job\n```\n\n```Output\nId     Name            PSJobTypeName   State         HasMoreData     Location             Command\n--     ----            -------------   -----         -----------     --------             -------\n1      Long Running... AzureLongRun... Running       True            localhost            Remove-AzureRmResource...\n```\n\n此命令會刪除教學課程期間建立的資源，並保證以正確的順序將資源解除配置。 `-AsJob` 參數可防止 PowerShell 在刪除作業執行時遭到阻止。 若要等候刪除完成，使用以下命令：\n\n```powershell\nWait-Job -Id $job.Id\n```\n\n清理完成後，表示已完成本教學課程。 請繼續閱讀您學到的所有內容摘要，以及取得可協助您使用後續步驟的資源連結。"
+- durationInMinutes: 1
+  title: "總結"
+  content: "\n恭喜！ 您已了解如何使用新資源或現有資源建立 VM、使用運算式和其他 Azure PowerShell 命令來擷取資料並儲存到殼層變數，以及查看為 Azure VM 建立的部分資源。\n\n接下來，您可以根據要如何使用 Azure PowerShell，進行不同的步驟。 有各種不同的資料可讓您進一步深入探討本教學課程中涵蓋的功能。\n\n### <a name=\"in-depth-azure-powershell-documentation\"></a>深入了解 Azure PowerShell 文件\n\n建議您花點時間瀏覽完整的[Azure PowerShell 文件](overview.md)。\n\n如需本教學課程中使用之命令的詳細資訊，請參閱以下文章。\n\n- [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup)\n- [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential)\n- [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm)\n- [Select-Object](/powershell/module/microsoft.powershell.utility/select-object)\n- [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-AzureRmPublicIpAddress)\n- [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/Remove-AzureRmResourceGroup)\n- [Wait-Job](/powershell/module/microsoft.powershell.core/wait-job)\n\n另外也有一些文章可幫助您深入了解教學課程中出現的 CLI 功能。\n\n- [PowerShell 展開](/powershell/module/microsoft.powershell.core/about/about_splatting)\n- [查詢](queries-azureps.md)\n- [格式化](formatting-output.md)\n- [使用 PowerShell 作業](using-psjobs.md)\n\n### <a name=\"sample-scripts\"></a>範例指令碼\n\n如果您想要立即開始進行特定工作，可看看一些範例指令碼。\n\n- [Linux 虛擬機器](/azure/virtual-machines/linux/powershell-samples?toc=%2fpowershell%2fmodule%2ftoc.json)\n- [Windows 虛擬機器](/azure/virtual-machines/windows/powershell-samples?toc=%2fpowershell%2fmodule%2ftoc.json)\n- [Web Apps](/azure/app-service-web/app-service-powershell-samples?toc=%2fpowershell%2fmodule%2ftoc.json)\n- [SQL Databases](/azure/sql-database/sql-database-powershell-samples?toc=%2fpowershell%2fmodule%2ftoc.json)\n- [Cosmos DB](/azure/cosmos-db/powershell-samples?toc=%2fpowershell%2fmodules%2ftoc.json)\n\n### <a name=\"feedback\"></a>意見反應\n\n如果您想要提供意見反應、建議或詢問問題，可透過許多方式與我們連絡。\n\n* `Send-Feedback` 是內建的 Azure PowerShell 命令，是內建的 Azure PowerShell 命令，可讓您向我們的小組提供意見反應，格式不拘。\n* 在 [Azure PowerShell 存放庫](https://github.com/Azure/azure-powershell/issues)中提交功能要求或錯誤報告。\n* 若要詢問問題或釐清問題，請在 [Azure PowerShell 文件存放庫](https://github.com/Azure/azure-docs-powershell/issues)中提交問題。\n\n希望您滿意 Azure PowerShell！"
