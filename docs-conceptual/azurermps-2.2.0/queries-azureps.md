@@ -1,6 +1,6 @@
 ---
-title: "查詢 Azure 資源以及將結果格式化 | Microsoft Docs"
-description: "如何查詢 Azure 中的資源，並將結果格式化。"
+title: 查詢 Azure 資源以及將結果格式化 | Microsoft Docs
+description: 如何查詢 Azure 中的資源，並將結果格式化。
 services: azure
 author: sdwheeler
 ms.author: sewhee
@@ -11,10 +11,10 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 03/30/2017
 ms.openlocfilehash: 93a031ce90352286bb1a5e01dc65e6db7cbe5c7e
-ms.sourcegitcommit: 20af779cd523c758d40e23d60eb989a4ef982d5c
+ms.sourcegitcommit: 15bf69bf95eceb936b3a429e741add95c308826a
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/15/2018
+ms.lasthandoff: 03/28/2018
 ---
 # <a name="querying-for-azure-resources"></a>查詢 Azure 資源
 
