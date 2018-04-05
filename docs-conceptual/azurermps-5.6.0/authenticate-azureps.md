@@ -10,11 +10,11 @@ ms.service: azure-powershell
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 05/15/2017
-ms.openlocfilehash: 1af5aeffb8e87e916df3e2440a84805935136c0f
-ms.sourcegitcommit: 15bf69bf95eceb936b3a429e741add95c308826a
+ms.openlocfilehash: f07dee0eed106e39879d58ae06ff08b787faa531
+ms.sourcegitcommit: 8376e0bc5f862d382d7283ba72990e3707591e7b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="log-in-with-azure-powershell"></a>使用 Azure PowerShell 來登入
 
@@ -22,7 +22,7 @@ Azure PowerShell 支援多種登入方法。 最簡單的入門方法是在命�
 
 ## <a name="interactive-log-in"></a>互動式登入
 
-1. 輸入 `Login-AzureRmAccount`。 您會看到對話方塊，裡面會要求您提供 Azure 認證。
+1. 輸入 `Connect-AzureRmAccount`。 您會看到對話方塊，裡面會要求您提供 Azure 認證。
 
 2. 輸入與您帳戶相關聯的電子郵件地址和密碼。 Azure 會驗證並儲存認證資訊，然後關閉視窗。
 
@@ -35,7 +35,7 @@ Azure PowerShell 支援多種登入方法。 最簡單的入門方法是在命�
 2. 使用服務主體來登入。
 
     ```powershell
-    Login-AzureRmAccount -ServicePrincipal -ApplicationId  "http://my-app" -Credential $pscredential -TenantId $tenantid
+    Connect-AzureRmAccount -ServicePrincipal -ApplicationId  "http://my-app" -Credential $pscredential -TenantId $tenantid
     ```
 
     若要取得您的 TenantId，請以互動方式登入，然後從您的訂用帳戶中取得 TenantId。
@@ -64,7 +64,7 @@ Azure PowerShell 支援多種登入方法。 最簡單的入門方法是在命�
 Azure 雲端服務提供不同的環境，以遵循各國政府的資料處理法規。 如果您的 Azure 帳戶位於某一個政府雲端，則需要在登入時指定環境。 例如，如果您的帳戶位於中國雲端，則可使用下列命令來登入：
 
 ```powershell
-Login-AzureRmAccount -EnvironmentName AzureChinaCloud
+Connect-AzureRmAccount -Environment AzureChinaCloud
 ```
 
 使用下列命令來取得可用環境的清單：

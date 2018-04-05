@@ -10,11 +10,11 @@ ms.service: azure-powershell
 ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 12/11/2017
-ms.openlocfilehash: 0a445a7db84c8deb6518b826b4096983669c5961
-ms.sourcegitcommit: 15bf69bf95eceb936b3a429e741add95c308826a
+ms.openlocfilehash: dfc1efa752c9c9fa42ad5904adacd83c2dc333b8
+ms.sourcegitcommit: 8376e0bc5f862d382d7283ba72990e3707591e7b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="running-cmdlets-in-parallel-using-powershell-jobs"></a>使用 PowerShell 作業平行執行 Cmdlet
 
@@ -23,7 +23,7 @@ Azure PowerShell 高度相依於進行或等待對 Azure 進行網路呼叫。 �
 
 ## <a name="context-persistence-and-psjobs"></a>內容持續性和 PSJobs
 
-PSJobs 會以個別程序執行，表示您必須將 Azure 連線相關的資訊適當地與您建立的作業共用。 在使用 `Login-AzureRmAccount` 將 Azure 帳戶連線到 PowerShell 工作階段時，您可以將內容傳送給作業。
+PSJobs 會以個別程序執行，表示您必須將 Azure 連線相關的資訊適當地與您建立的作業共用。 在使用 `Connect-AzureRmAccount` 將 Azure 帳戶連線到 PowerShell 工作階段時，您可以將內容傳送給作業。
 
 ```powershell
 $creds = Get-Credential
