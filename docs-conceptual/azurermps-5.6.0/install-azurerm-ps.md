@@ -9,18 +9,17 @@ ms.product: azure
 ms.service: azure-powershell
 ms.devlang: powershell
 ms.topic: conceptual
-ms.date: 08/31/2017
-ms.openlocfilehash: 1a1a2e3d69252c8461284e6ec8e26fa838e773f7
-ms.sourcegitcommit: 15bf69bf95eceb936b3a429e741add95c308826a
+ms.date: 03/27/2018
+ms.openlocfilehash: a10cb9496ff6822c6f4c10ab336dd21c85084da8
+ms.sourcegitcommit: 8376e0bc5f862d382d7283ba72990e3707591e7b
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 03/28/2018
+ms.lasthandoff: 03/30/2018
 ---
 # <a name="install-and-configure-azure-powershell"></a>安裝並設定 Azure PowerShell
 
-本文說明在 Windows 環境中安裝 Azure PowerShell 模組的步驟。  
-如果您想要在 macOS 或 Linux 上使用 Azure PowerShell，請參閱下列文章：  
-[在 macOS 與 Linux 上安裝和設定 Azure PowerShell](install-azurermps-maclinux.md)。
+本文說明在 Windows 環境中安裝 Azure PowerShell 模組的步驟。
+如果您想要在 macOS 或 Linux 上使用 Azure PowerShell，請參閱下列文章：[在 macOS 與 Linux 上安裝和設定 Azure PowerShell](install-azurermps-maclinux.md)。
 
 從 PowerShell 資源庫安裝 Azure PowerShell 是慣用的安裝方法。
 
@@ -37,9 +36,14 @@ Get-Module -Name PowerShellGet -ListAvailable | Select-Object -Property Name,Ver
 ```Output
 Name          Version Path
 ----          ------- ----
+Name          Version Path
+----          ------- ----
+PowerShellGet 1.6.0   C:\Program Files\WindowsPowerShell\Modules\PowerShellGet\1.6.0\PowerShellGet.psd1
 PowerShellGet 1.0.0.1 C:\Program Files\WindowsPowerShell\Modules\PowerShellGet\1.0.0.1\PowerShellGet.psd1
 ```
-此外，您可以使用下列命令來更新 PowerShellGet：
+
+您需要 PowerShellGet 1.1.2.0 版或更高版本。 若要更新 PowerShellGet，請使用下列命令：
+
 ```powershell
 Install-Module PowerShellGet -Force
 ```
