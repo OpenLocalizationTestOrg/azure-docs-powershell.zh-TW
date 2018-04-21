@@ -1,6 +1,6 @@
 ---
-title: "開始使用 Azure PowerShell | Microsoft Docs"
-description: 
+title: 開始使用 Azure PowerShell | Microsoft Docs
+description: ''
 services: azure
 author: sdwheeler
 ms.author: sewhee
@@ -9,12 +9,12 @@ ms.product: azure
 ms.service: azure-powershell
 ms.devlang: powershell
 ms.topic: get-started-article
-ms.date: 08/31/2017
-ms.openlocfilehash: 2cd3fc8e955ae826471dceee79d5e6b70070d416
-ms.sourcegitcommit: e6b7e20bbd04eda51416c56b13f867102b602d1a
+ms.date: 11/15/2017
+ms.openlocfilehash: 5f1bd0c780b027b2b5779c70fa3145c5dfdc3bb4
+ms.sourcegitcommit: 4ebdeea3c472d94c1aedb10b9d85bf2e76826e83
 ms.translationtype: HT
 ms.contentlocale: zh-TW
-ms.lasthandoff: 10/07/2017
+ms.lasthandoff: 01/09/2018
 ---
 # <a name="getting-started-with-azure-powershell"></a>開始使用 Azure PowerShell
 
@@ -44,7 +44,7 @@ Azure PowerShell 的設計是為了讓您從命令列管理 Azure 資源，以�
 
 1. [安裝 Azure PowerShell](install-azurerm-ps.md)。
 
-2. 若要確認安裝是否成功，請從命令列執行 `Get-Module AzureRM`。
+2. 若要確認安裝是否成功，請從命令列執行 `Get-Module AzureRM -ListAvailable`。
 
 ## <a name="log-in-to-azure"></a>登入 Azure
 
@@ -286,9 +286,9 @@ $vnet = New-AzureRmVirtualNetwork -ResourceGroupName myResourceGroup -Location w
   -Name MYvNET3 -AddressPrefix 10.0.0.0/16 -Subnet $subnetConfig
 ```
 
-Azure 和 Azure PowerShell 的功能之所以強大，是因為它們不只能用來獲得雲端架構的基礎結構，還能用來建立受管理的平台服務。 受管理的平台服務也可以結合基礎結構來建置更強大的解決方案。
+Azure 和 Azure PowerShell 的功能之所以強大，是因為它們不只能用來獲得雲端架構的基礎結構，還能用來建立受控平台服務。 受控平台服務也可以結合基礎結構來建置更強大的解決方案。
 
-例如，您可以使用 Azure PowerShell 來建立 Azure AppService。 Azure AppService 是一種受管理的平台服務，它可讓您裝載 Web 應用程式，而不必擔心基礎結構的問題。 在建立 Azure AppService 之後，您可以使用下列命令在 AppService 內建立兩個新的 Azure Web Apps︰
+例如，您可以使用 Azure PowerShell 來建立 Azure AppService。 Azure AppService 是一種受控平台服務，它可讓您裝載 Web 應用程式，而不必擔心基礎結構的問題。 在建立 Azure AppService 之後，您可以使用下列命令在 AppService 內建立兩個新的 Azure Web Apps︰
 
 ```powershell
 # Create an Azure AppService that we can host any number of web apps within
